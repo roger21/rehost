@@ -1,0 +1,148 @@
+{
+
+  "extension_name": {
+    "message": "Rehost",
+    "description": "Name of the extension."
+  },
+
+  "extension_description": {
+    "message": "Réhéberge facilement les images du web.",
+    "description": "Description of the extension."
+  },
+
+  "menu_item_without": {
+    "message": "Rehost sans rehost",
+    "description": "Title of the menu item rehost without rehost."
+  },
+
+  "menu_item_gif": {
+    "message": "Rehost taille originale (gif)",
+    "description": "Title of the menu item rehost original size for gif."
+  },
+
+  "menu_item_original": {
+    "message": "Rehost taille originale",
+    "description": "Title of the menu item rehost original size."
+  },
+
+  "menu_item_large": {
+    "message": "Rehost large (1200px)",
+    "description": "Title of the menu item rehost large (1200px)."
+  },
+
+  "menu_item_grand": {
+    "message": "Rehost grand (1000px)",
+    "description": "Title of the menu item rehost grand (1000px)."
+  },
+
+  "menu_item_medium": {
+    "message": "Rehost moyen (800px)",
+    "description": "Title of the menu item rehost medium (800px)."
+  },
+
+  "menu_item_preview": {
+    "message": "Rehost apperçu (600px)",
+    "description": "Title of the menu item rehost preview (600px)."
+  },
+
+  "menu_item_thumbnail": {
+    "message": "Rehost vignette (230px)",
+    "description": "Title of the menu item rehost thumbnail (230px)."
+  },
+
+  "menu_item_mini": {
+    "message": "Rehost mini (150px)",
+    "description": "Title of the menu item rehost mini (150px)."
+  },
+
+  "hosts_sub_menu": {
+    "message": "Hébergeurs",
+    "description": "Title of the sub menu for hosts."
+  },
+
+  "menu_item_rehost": {
+    "message": "reho.st",
+    "description": "Title of the menu item reho.st."
+  },
+
+  "menu_item_diberie": {
+    "message": "diberie.com",
+    "description": "Title of the menu item diberie.com."
+  },
+
+  "menu_item_weserv": {
+    "message": "weserv.nl",
+    "description": "Title of the menu item weserv.nl."
+  },
+
+  "menu_item_configuration": {
+    "message": "Configuration",
+    "description": "Title of the menu item configuration."
+  },
+
+  "menu_item_temporary": {
+    "message": "Historique temporaire",
+    "description": "Title of the menu item temporary history."
+  },
+
+  "menu_item_history": {
+    "message": "Historique",
+    "description": "Title of the menu item history."
+  },
+
+  "options_sub_menu": {
+    "message": "Options",
+    "description": "Title of the sub menu for options."
+  },
+
+  "menu_item_notifications": {
+    "message": "Notifications",
+    "description": "Title of the menu item notifications."
+  },
+
+  "menu_item_link_image": {
+    "message": "Lien vers l'image",
+    "description": "Title of the menu item link to the image."
+  },
+
+  "menu_item_link_page": {
+    "message": "Lien vers la page",
+    "description": "Title of the menu item link to the page."
+  },
+
+  "menu_item_break": {
+    "message": "Ajouter un retour",
+    "description": "Title of the menu item add a break."
+  },
+
+  "size_large": {
+    "message": "large",
+    "description": "Name of the size large."
+  },
+
+  "size_grand": {
+    "message": "grand",
+    "description": "Name of the size grand."
+  },
+
+  "size_medium": {
+    "message": "moyen",
+    "description": "Name of the size medium."
+  },
+
+  "size_preview": {
+    "message": "aperçu",
+    "description": "Name of the size preview."
+  },
+
+  "size_thumbnail": {
+    "message": "vignette",
+    "description": "Name of the size thumbnail."
+  },
+
+  "size_mini": {
+    "message": "mini",
+    "description": "Name of the size mini."
+  }
+
+}

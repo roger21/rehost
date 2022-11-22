@@ -1,0 +1,1 @@
+browser.runtime.sendMessage("message sent popup.js lol");

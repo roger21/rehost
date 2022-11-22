@@ -1,0 +1,1 @@
+browser.runtime.sendMessage("message sent options.js lol");
