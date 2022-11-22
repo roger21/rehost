@@ -189,7 +189,7 @@ const default_menu = [{
   "checked": true,
   "contexts": ["image"],
   "enabled": true,
-  "id": "menu_item_rehost",
+  "id": "submenu_item_rehost",
   "parentId": hosts_sub_menu_id,
   "targetUrlPatterns": ["*://*/*"],
   "title": browser.i18n.getMessage("menu_item_rehost"),
@@ -203,7 +203,7 @@ const default_menu = [{
   "checked": false,
   "contexts": ["image"],
   "enabled": true,
-  "id": "menu_item_diberie",
+  "id": "submenu_item_diberie",
   "parentId": hosts_sub_menu_id,
   "targetUrlPatterns": ["*://*/*"],
   "title": browser.i18n.getMessage("menu_item_diberie"),
@@ -217,8 +217,50 @@ const default_menu = [{
   "checked": false,
   "contexts": ["image"],
   "enabled": true,
-  "id": "menu_item_weserv",
+  "id": "submenu_item_weserv",
   "parentId": hosts_sub_menu_id,
+  "targetUrlPatterns": ["*://*/*"],
+  "title": browser.i18n.getMessage("menu_item_weserv"),
+  "type": "radio",
+  "viewTypes": ["tab"],
+  "visible": true
+
+}, {
+
+  // host rehost
+  "checked": true,
+  "contexts": ["image"],
+  "enabled": true,
+  "id": "menu_item_rehost",
+  "parentId": rehost_main_menu_id,
+  "targetUrlPatterns": ["*://*/*"],
+  "title": browser.i18n.getMessage("menu_item_rehost"),
+  "type": "radio",
+  "viewTypes": ["tab"],
+  "visible": true
+
+}, {
+
+  // host diberie
+  "checked": false,
+  "contexts": ["image"],
+  "enabled": true,
+  "id": "menu_item_diberie",
+  "parentId": rehost_main_menu_id,
+  "targetUrlPatterns": ["*://*/*"],
+  "title": browser.i18n.getMessage("menu_item_diberie"),
+  "type": "radio",
+  "viewTypes": ["tab"],
+  "visible": true
+
+}, {
+
+  // host weserv
+  "checked": false,
+  "contexts": ["image"],
+  "enabled": true,
+  "id": "menu_item_weserv",
+  "parentId": rehost_main_menu_id,
   "targetUrlPatterns": ["*://*/*"],
   "title": browser.i18n.getMessage("menu_item_weserv"),
   "type": "radio",
@@ -328,7 +370,7 @@ const default_menu = [{
   "checked": true,
   "contexts": ["image"],
   "enabled": true,
-  "id": "menu_item_notifications",
+  "id": "submenu_item_notifications",
   "parentId": options_sub_menu_id,
   "targetUrlPatterns": ["*://*/*"],
   "title": browser.i18n.getMessage("menu_item_notifications"),
@@ -342,7 +384,7 @@ const default_menu = [{
   "checked": true,
   "contexts": ["image"],
   "enabled": true,
-  "id": "menu_item_link_image",
+  "id": "submenu_item_link_image",
   "parentId": options_sub_menu_id,
   "targetUrlPatterns": ["*://*/*"],
   "title": browser.i18n.getMessage("menu_item_link_image"),
@@ -356,7 +398,7 @@ const default_menu = [{
   "checked": false,
   "contexts": ["image"],
   "enabled": true,
-  "id": "menu_item_link_page",
+  "id": "submenu_item_link_page",
   "parentId": options_sub_menu_id,
   "targetUrlPatterns": ["*://*/*"],
   "title": browser.i18n.getMessage("menu_item_link_page"),
@@ -370,8 +412,64 @@ const default_menu = [{
   "checked": false,
   "contexts": ["image"],
   "enabled": true,
-  "id": "menu_item_break",
+  "id": "submenu_item_break",
   "parentId": options_sub_menu_id,
+  "targetUrlPatterns": ["*://*/*"],
+  "title": browser.i18n.getMessage("menu_item_break"),
+  "type": "checkbox",
+  "viewTypes": ["tab"],
+  "visible": true
+
+}, {
+
+  // option notifications
+  "checked": true,
+  "contexts": ["image"],
+  "enabled": true,
+  "id": "menu_item_notifications",
+  "parentId": rehost_main_menu_id,
+  "targetUrlPatterns": ["*://*/*"],
+  "title": browser.i18n.getMessage("menu_item_notifications"),
+  "type": "checkbox",
+  "viewTypes": ["tab"],
+  "visible": true
+
+}, {
+
+  // option link image
+  "checked": true,
+  "contexts": ["image"],
+  "enabled": true,
+  "id": "menu_item_link_image",
+  "parentId": rehost_main_menu_id,
+  "targetUrlPatterns": ["*://*/*"],
+  "title": browser.i18n.getMessage("menu_item_link_image"),
+  "type": "radio",
+  "viewTypes": ["tab"],
+  "visible": true
+
+}, {
+
+  // option link page
+  "checked": false,
+  "contexts": ["image"],
+  "enabled": true,
+  "id": "menu_item_link_page",
+  "parentId": rehost_main_menu_id,
+  "targetUrlPatterns": ["*://*/*"],
+  "title": browser.i18n.getMessage("menu_item_link_page"),
+  "type": "radio",
+  "viewTypes": ["tab"],
+  "visible": true
+
+}, {
+
+  // option break
+  "checked": false,
+  "contexts": ["image"],
+  "enabled": true,
+  "id": "menu_item_break",
+  "parentId": rehost_main_menu_id,
   "targetUrlPatterns": ["*://*/*"],
   "title": browser.i18n.getMessage("menu_item_break"),
   "type": "checkbox",
@@ -496,6 +594,10 @@ function update_menu() {
     }));
   }
   // separator rehost / hosts
+  // sub hosts
+  // host rehost
+  // host diberie
+  // host weserv
   if(g_options["menu_host"] !== false) {
     l_promises.push(browser.menus.update("menu_item_separator_1", {
       "enabled": true,
@@ -506,55 +608,19 @@ function update_menu() {
       "enabled": false,
       "visible": false
     }));
-  }
-  // sub hosts
-  // host rehost
-  // host diberie
-  // host weserv
-  if(g_options["menu_host"] === "sub") {
-    l_promises.push(browser.menus.update(hosts_sub_menu_id, {
-      "enabled": true,
-      "visible": true
-    }));
-    l_promises.push(browser.menus.update("menu_item_rehost", {
-      "enabled": true,
-      "parentId": hosts_sub_menu_id,
-      "visible": true
-    }));
-    l_promises.push(browser.menus.update("menu_item_diberie", {
-      "enabled": true,
-      "parentId": hosts_sub_menu_id,
-      "visible": true
-    }));
-    l_promises.push(browser.menus.update("menu_item_weserv", {
-      "enabled": true,
-      "parentId": hosts_sub_menu_id,
-      "visible": true
-    }));
-  }
-  if(g_options["menu_host"] === true) {
     l_promises.push(browser.menus.update(hosts_sub_menu_id, {
       "enabled": false,
       "visible": false
     }));
-    l_promises.push(browser.menus.update("menu_item_rehost", {
-      "enabled": true,
-      "parentId": rehost_main_menu_id,
-      "visible": true
+    l_promises.push(browser.menus.update("submenu_item_rehost", {
+      "enabled": false,
+      "visible": false
     }));
-    l_promises.push(browser.menus.update("menu_item_diberie", {
-      "enabled": true,
-      "parentId": rehost_main_menu_id,
-      "visible": true
+    l_promises.push(browser.menus.update("submenu_item_diberie", {
+      "enabled": false,
+      "visible": false
     }));
-    l_promises.push(browser.menus.update("menu_item_weserv", {
-      "enabled": true,
-      "parentId": rehost_main_menu_id,
-      "visible": true
-    }));
-  }
-  if(g_options["menu_host"] === false) {
-    l_promises.push(browser.menus.update(hosts_sub_menu_id, {
+    l_promises.push(browser.menus.update("submenu_item_weserv", {
       "enabled": false,
       "visible": false
     }));
@@ -569,6 +635,66 @@ function update_menu() {
     l_promises.push(browser.menus.update("menu_item_weserv", {
       "enabled": false,
       "visible": false
+    }));
+  }
+  if(g_options["menu_hosts"] === "sub") {
+    l_promises.push(browser.menus.update(hosts_sub_menu_id, {
+      "enabled": true,
+      "visible": true
+    }));
+    l_promises.push(browser.menus.update("submenu_item_rehost", {
+      "enabled": true,
+      "visible": true
+    }));
+    l_promises.push(browser.menus.update("submenu_item_diberie", {
+      "enabled": true,
+      "visible": true
+    }));
+    l_promises.push(browser.menus.update("submenu_item_weserv", {
+      "enabled": true,
+      "visible": true
+    }));
+    l_promises.push(browser.menus.update("menu_item_rehost", {
+      "enabled": false,
+      "visible": false
+    }));
+    l_promises.push(browser.menus.update("menu_item_diberie", {
+      "enabled": false,
+      "visible": false
+    }));
+    l_promises.push(browser.menus.update("menu_item_weserv", {
+      "enabled": false,
+      "visible": false
+    }));
+  }
+  if(g_options["menu_hosts"] === true) {
+    l_promises.push(browser.menus.update(hosts_sub_menu_id, {
+      "enabled": false,
+      "visible": false
+    }));
+    l_promises.push(browser.menus.update("submenu_item_rehost", {
+      "enabled": false,
+      "visible": false
+    }));
+    l_promises.push(browser.menus.update("submenu_item_diberie", {
+      "enabled": false,
+      "visible": false
+    }));
+    l_promises.push(browser.menus.update("submenu_item_weserv", {
+      "enabled": false,
+      "visible": false
+    }));
+    l_promises.push(browser.menus.update("menu_item_rehost", {
+      "enabled": true,
+      "visible": true
+    }));
+    l_promises.push(browser.menus.update("menu_item_diberie", {
+      "enabled": true,
+      "visible": true
+    }));
+    l_promises.push(browser.menus.update("menu_item_weserv", {
+      "enabled": true,
+      "visible": true
     }));
   }
   // separator 2 hosts / configuration
@@ -582,8 +708,7 @@ function update_menu() {
       "enabled": true,
       "visible": true
     }));
-  }
-  esle {
+  } else {
     l_promises.push(browser.menus.update("menu_item_separator_2", {
       "enabled": false,
       "visible": false
@@ -599,8 +724,7 @@ function update_menu() {
       "enabled": true,
       "visible": true
     }));
-  }
-  esle {
+  } else {
     l_promises.push(browser.menus.update("menu_item_separator_3", {
       "enabled": false,
       "visible": false
@@ -612,8 +736,7 @@ function update_menu() {
       "enabled": true,
       "visible": true
     }));
-  }
-  esle {
+  } else {
     l_promises.push(browser.menus.update("menu_item_temporary", {
       "enabled": false,
       "visible": false
@@ -625,14 +748,18 @@ function update_menu() {
       "enabled": true,
       "visible": true
     }));
-  }
-  esle {
+  } else {
     l_promises.push(browser.menus.update("menu_item_history", {
       "enabled": false,
       "visible": false
     }));
   }
   // separator 4 histories / options
+  // sub options
+  // option notifications
+  // option link image
+  // option link page
+  // option break
   if(g_options["menu_options"] !== false) {
     l_promises.push(browser.menus.update("menu_item_separator_4", {
       "enabled": true,
@@ -643,36 +770,79 @@ function update_menu() {
       "enabled": false,
       "visible": false
     }));
+    l_promises.push(browser.menus.update(options_sub_menu_id, {
+      "enabled": false,
+      "visible": false
+    }));
+    l_promises.push(browser.menus.update("submenu_item_notifications", {
+      "enabled": false,
+      "visible": false
+    }));
+    l_promises.push(browser.menus.update("submenu_item_link_image", {
+      "enabled": false,
+      "visible": false
+    }));
+    l_promises.push(browser.menus.update("submenu_item_link_page", {
+      "enabled": false,
+      "visible": false
+    }));
+    l_promises.push(browser.menus.update("submenu_item_break", {
+      "enabled": false,
+      "visible": false
+    }));
+    l_promises.push(browser.menus.update("menu_item_notifications", {
+      "enabled": false,
+      "visible": false
+    }));
+    l_promises.push(browser.menus.update("menu_item_link_image", {
+      "enabled": false,
+      "visible": false
+    }));
+    l_promises.push(browser.menus.update("menu_item_link_page", {
+      "enabled": false,
+      "visible": false
+    }));
+    l_promises.push(browser.menus.update("menu_item_break", {
+      "enabled": false,
+      "visible": false
+    }));
   }
-  // sub options
-  // option notifications
-  // option link image
-  // option link page
-  // option break
   if(g_options["menu_options"] === "sub") {
     l_promises.push(browser.menus.update(options_sub_menu_id, {
       "enabled": true,
       "visible": true
     }));
-    l_promises.push(browser.menus.update("menu_item_notifications", {
+    l_promises.push(browser.menus.update("submenu_item_notifications", {
       "enabled": true,
-      "parentId": options_sub_menu_id,
       "visible": true
+    }));
+    l_promises.push(browser.menus.update("submenu_item_link_image", {
+      "enabled": true,
+      "visible": true
+    }));
+    l_promises.push(browser.menus.update("submenu_item_link_page", {
+      "enabled": true,
+      "visible": true
+    }));
+    l_promises.push(browser.menus.update("submenu_item_break", {
+      "enabled": true,
+      "visible": true
+    }));
+    l_promises.push(browser.menus.update("menu_item_notifications", {
+      "enabled": false,
+      "visible": false
     }));
     l_promises.push(browser.menus.update("menu_item_link_image", {
-      "enabled": true,
-      "parentId": options_sub_menu_id,
-      "visible": true
+      "enabled": false,
+      "visible": false
     }));
     l_promises.push(browser.menus.update("menu_item_link_page", {
-      "enabled": true,
-      "parentId": options_sub_menu_id,
-      "visible": true
+      "enabled": false,
+      "visible": false
     }));
     l_promises.push(browser.menus.update("menu_item_break", {
-      "enabled": true,
-      "parentId": options_sub_menu_id,
-      "visible": true
+      "enabled": false,
+      "visible": false
     }));
   }
   if(g_options["menu_options"] === true) {
@@ -680,52 +850,50 @@ function update_menu() {
       "enabled": false,
       "visible": false
     }));
-    l_promises.push(browser.menus.update("menu_item_notifications", {
-      "enabled": true,
-      "parentId": rehost_main_menu_id,
-      "visible": true
+    l_promises.push(browser.menus.update("submenu_item_notifications", {
+      "enabled": false,
+      "visible": false
     }));
-    l_promises.push(browser.menus.update("menu_item_link_image", {
-      "enabled": true,
-      "parentId": rehost_main_menu_id,
-      "visible": true
+    l_promises.push(browser.menus.update("submenu_item_link_image", {
+      "enabled": false,
+      "visible": false
     }));
-    l_promises.push(browser.menus.update("menu_item_link_page", {
-      "enabled": true,
-      "parentId": rehost_main_menu_id,
-      "visible": true
+    l_promises.push(browser.menus.update("submenu_item_link_page", {
+      "enabled": false,
+      "visible": false
     }));
-    l_promises.push(browser.menus.update("menu_item_break", {
-      "enabled": true,
-      "parentId": rehost_main_menu_id,
-      "visible": true
-    }));
-  }
-  if(g_options["menu_options"] === false) {
-    l_promises.push(browser.menus.update(options_sub_menu_id, {
+    l_promises.push(browser.menus.update("submenu_item_break", {
       "enabled": false,
       "visible": false
     }));
     l_promises.push(browser.menus.update("menu_item_notifications", {
-      "enabled": false,
-      "visible": false
+      "enabled": true,
+      "visible": true
     }));
     l_promises.push(browser.menus.update("menu_item_link_image", {
-      "enabled": false,
-      "visible": false
+      "enabled": true,
+      "visible": true
     }));
     l_promises.push(browser.menus.update("menu_item_link_page", {
-      "enabled": false,
-      "visible": false
+      "enabled": true,
+      "visible": true
     }));
     l_promises.push(browser.menus.update("menu_item_break", {
-      "enabled": false,
-      "visible": false
+      "enabled": true,
+      "visible": true
     }));
   }
   // option link image
   // option link page
   if(g_options["host"] !== "TODO" && g_options["host"] !== "TODO") {
+    l_promises.push(browser.menus.update("submenu_item_link_image", {
+      "enabled": false,
+      "visible": false
+    }));
+    l_promises.push(browser.menus.update("submenu_item_link_page", {
+      "enabled": false,
+      "visible": false
+    }));
     l_promises.push(browser.menus.update("menu_item_link_image", {
       "enabled": false,
       "visible": false
@@ -735,6 +903,11 @@ function update_menu() {
       "visible": false
     }));
   }
+  Promise.all(l_promises).then(function() {
+    debug_message("update_menu", "ok");
+  }).catch(function(p_error) {
+    error_message("update_menu", p_error);
+  });
 }
 
 function refresh_menu(p_gif = false) {
@@ -867,4 +1040,3 @@ init_options(update_menu);
   });
 
 */
-

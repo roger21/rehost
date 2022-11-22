@@ -64,4 +64,3 @@ function init_options(p_do_something) {
   browser.runtime.onMessage.addListener(message_handler);
 
 */
-

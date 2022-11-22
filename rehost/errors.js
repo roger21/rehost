@@ -11,4 +11,3 @@ function debug_message(p_action, p_message) {
       " : " + p_action + " : ", p_message);
   }
 }
-
