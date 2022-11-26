@@ -43,7 +43,7 @@
     "default_icon": "images/rehost.svg",
     "default_title": "__MSG_extension_name__",
     "default_popup": "popup/popup.html",
-    "browser_style": true
+    "browser_style": false
   }
 
 }

@@ -1,5 +1,55 @@
-body{
-  background-color:green;
-  height:200px;
-  width:200px;
+html, body, p, input, button, hr, label{
+  outline:0;
+  margin:0;
+  border:0;
+  padding:0;
+  cursor:default;
+  font:caption;
+  color:#2e3436;
+  background:#ffffff;
+}
+@media (prefers-color-scheme: dark) {
+  html, body, p, input, button, hr, label{
+    color:#eeeeec;
+    background:#2f2f2f;
+  }
+}
+.loading{
+  display:none;
+}
+p{
+  padding:4px 12px;
+  min-width:150px;
+}
+p:first-of-type{
+  margin-top:4px;
+}
+p:last-of-type{
+  margin-bottom:4px;
+}
+p:hover{
+  background-color:rgba(0,0,0,0.15);
+}
+hr{
+  border:1px solid #e0e0e0;
+  border-width:1px 0 0 0;
+  margin:4px 0;
+}
+@media (prefers-color-scheme: dark) {
+  p:hover{
+    background-color:rgba(255,255,255,0.15);
+  }
+  hr{
+    border-color:#606060;
+  }
+}
+button{
+  text-align:left;
+  background-color:transparent;
+}
+input{
+  margin:0 4px 0 0;
+}
+label{
+  background-color:transparent;
 }

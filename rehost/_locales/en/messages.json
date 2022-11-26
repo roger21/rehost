@@ -115,34 +115,59 @@
     "description": "Title of the menu item add a break."
   },
 
-  "size_large": {
-    "message": "large",
-    "description": "Name of the size large."
+  "popup_title": {
+    "message": "Popup - Rehost",
+    "description": "Title of the popup page."
   },
 
-  "size_grand": {
-    "message": "grand",
-    "description": "Name of the size grand."
+  "popup_label_rehost": {
+    "message": "reho.st",
+    "description": "Label for the host reho.st in the popup."
   },
 
-  "size_medium": {
-    "message": "medium",
-    "description": "Name of the size medium."
+  "popup_label_diberie": {
+    "message": "diberie.com",
+    "description": "Label for the host diberie.com in the popup."
   },
 
-  "size_preview": {
-    "message": "preview",
-    "description": "Name of the size preview."
+  "popup_label_weserv": {
+    "message": "weserv.nl",
+    "description": "Label for the host weserv.nl in the popup."
   },
 
-  "size_thumbnail": {
-    "message": "thumbnail",
-    "description": "Name of the size thumbnail."
+  "popup_label_configuration": {
+    "message": "Configuration",
+    "description": "Label for the configuration in the popup."
   },
 
-  "size_mini": {
-    "message": "mini",
-    "description": "Name of the size mini."
+  "popup_label_temporary": {
+    "message": "Temporary history",
+    "description": "Label for the temporary history page in the popup."
+  },
+
+  "popup_label_history": {
+    "message": "History",
+    "description": "Label for the history page in the popup."
+  },
+
+  "popup_label_notifications": {
+    "message": "Notifications",
+    "description": "Label for the option notifications in the popup."
+  },
+
+  "popup_label_link_image": {
+    "message": "Link to the image",
+    "description": "Label for the option link to image in the popup."
+  },
+
+  "popup_label_link_page": {
+    "message": "Link to the page",
+    "description": "Label for the option link to page in the popup."
+  },
+
+  "popup_label_break": {
+    "message": "Add a break",
+    "description": "Label for the option add a break in the popup."
   }
 
 }

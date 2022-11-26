@@ -172,7 +172,7 @@ const default_menu = [{
 
 }, {
 
-  // sub hosts
+  // sub menu hosts
   "contexts": ["image"],
   "enabled": false,
   "id": hosts_sub_menu_id,
@@ -353,7 +353,7 @@ const default_menu = [{
 
 }, {
 
-  // sub options
+  // sub menu options
   "contexts": ["image"],
   "enabled": false,
   "id": options_sub_menu_id,
@@ -719,7 +719,8 @@ function update_menu() {
     }));
   }
   // separator 3 configuration / histories
-  if(g_options["menu_temporary"] === true || g_options["menu_history"] === true) {
+  if((g_options["temporary"] === true || g_options["history"] === true) &&
+     (g_options["menu_temporary"] === true || g_options["menu_history"] === true)) {
     l_promises.push(browser.menus.update("menu_item_separator_3", {
       "enabled": true,
       "visible": true
@@ -731,7 +732,7 @@ function update_menu() {
     }));
   }
   // temporary history
-  if(g_options["menu_temporary"] === true) {
+  if(g_options["temporary"] === true && g_options["menu_temporary"] === true) {
     l_promises.push(browser.menus.update("menu_item_temporary", {
       "enabled": true,
       "visible": true
@@ -743,7 +744,7 @@ function update_menu() {
     }));
   }
   // history
-  if(g_options["menu_history"] === true) {
+  if(g_options["history"] === true && g_options["menu_history"] === true) {
     l_promises.push(browser.menus.update("menu_item_history", {
       "enabled": true,
       "visible": true

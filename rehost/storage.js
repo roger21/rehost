@@ -1,12 +1,12 @@
 const default_options = {
   "host": "rehost", // "rehost", "diberie", "weserv"
-  "temporary": false,
-  "history": false,
-  "menu_hosts": "sub", // false, true, "sub"
+  "temporary": true, // TODO false,
+  "history": true, // TODO false,
+  "menu_hosts": true, // false, true, "sub"
   "menu_configuration": true,
   "menu_temporary": true,
   "menu_history": true,
-  "menu_options": "sub", // false, true, "sub"
+  "menu_options": true, // false, true, "sub"
   "popup_popup": true,
   "popup_action": "configuration", // "configuration", "temporary", "history"
   "popup_hosts": true,
@@ -47,20 +47,19 @@ function init_options(p_do_something) {
 }
 
 
-/*
+function message_handler(p_message){
+  debug_message("message_handler", p_message);
 
-  function message_handler(p_message){
   switch(p_message){
   case "get_options":
-  break;
+    break;
   case "set_options":
-  break;
+    break;
   case "get_temporary":
-  break;
+    break;
   case "get_history":
-  break;
+    break;
   }
 
-  browser.runtime.onMessage.addListener(message_handler);
-
-*/
+}
+browser.runtime.onMessage.addListener(message_handler);
