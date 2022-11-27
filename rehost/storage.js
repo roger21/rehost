@@ -15,8 +15,8 @@ const default_options = {
   "popup_history": true,
   "popup_options": true,
   "notifications": true,
-  "link_choice": "image", // "image", "page"
-  "add_return": true,
+  "link": "image", // "image", "page"
+  "break": true,
   "without": true,
   "rehost_medium": true,
   "rehost_preview": true,
@@ -38,28 +38,31 @@ function init_options(p_do_something) {
     "options": default_options
   }).then(function(p_data) {
     g_options = p_data["options"];
-    debug_message("init_options browser.storage.local.get options -> g_options",
-      g_options);
+    debug_message("storage.js",
+      "init_options browser.storage.local.get options -> g_options", g_options);
     p_do_something();
   }).catch(function(p_error) {
-    error_message("init_options browser.storage.local.get", p_error);
+    error_message("storage.js", "init_options browser.storage.local.get", p_error);
   });
 }
 
 
-function message_handler(p_message){
-  debug_message("message_handler", p_message);
-
-  switch(p_message){
-  case "get_options":
-    break;
-  case "set_options":
-    break;
-  case "get_temporary":
-    break;
-  case "get_history":
-    break;
+function message_handler(p_message, p_sender, p_send_response) {
+  debug_message("storage.js", "message_handler", p_message);
+  switch(p_message) {
+    case "get_options":
+      //return new Promise(function(p_resolve) {
+      //  p_resolve(g_options);
+      //});
+      //return Promise.resolve(g_options);
+      p_send_response(g_options);
+      break;
+    case "set_options":
+      break;
+    case "get_temporary":
+      break;
+    case "get_history":
+      break;
   }
-
 }
 browser.runtime.onMessage.addListener(message_handler);

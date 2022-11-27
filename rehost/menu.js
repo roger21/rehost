@@ -34,7 +34,7 @@ const default_menu = [{
 
   // rehost gif
   "contexts": ["image"],
-  "enabled": true,
+  "enabled": false,
   "icons": {
     "16": "images/icons/icon_original.png"
   },
@@ -44,7 +44,7 @@ const default_menu = [{
   "title": browser.i18n.getMessage("menu_item_gif"),
   "type": "normal",
   "viewTypes": ["tab"],
-  "visible": true
+  "visible": false
 
 }, {
 
@@ -186,84 +186,96 @@ const default_menu = [{
 }, {
 
   // host rehost
-  "checked": true,
   "contexts": ["image"],
-  "enabled": true,
+  "enabled": false,
+  "icons": {
+    "16": "images/controls/radio_checked_light.png"
+  },
   "id": "submenu_item_rehost",
   "parentId": hosts_sub_menu_id,
   "targetUrlPatterns": ["*://*/*"],
   "title": browser.i18n.getMessage("menu_item_rehost"),
-  "type": "radio",
+  "type": "normal",
   "viewTypes": ["tab"],
-  "visible": true
+  "visible": false
 
 }, {
 
   // host diberie
-  "checked": false,
   "contexts": ["image"],
-  "enabled": true,
+  "enabled": false,
+  "icons": {
+    "16": "images/controls/radio_light.png"
+  },
   "id": "submenu_item_diberie",
   "parentId": hosts_sub_menu_id,
   "targetUrlPatterns": ["*://*/*"],
   "title": browser.i18n.getMessage("menu_item_diberie"),
-  "type": "radio",
+  "type": "normal",
   "viewTypes": ["tab"],
-  "visible": true
+  "visible": false
 
 }, {
 
   // host weserv
-  "checked": false,
   "contexts": ["image"],
-  "enabled": true,
+  "enabled": false,
+  "icons": {
+    "16": "images/controls/radio_light.png"
+  },
   "id": "submenu_item_weserv",
   "parentId": hosts_sub_menu_id,
   "targetUrlPatterns": ["*://*/*"],
   "title": browser.i18n.getMessage("menu_item_weserv"),
-  "type": "radio",
+  "type": "normal",
   "viewTypes": ["tab"],
-  "visible": true
+  "visible": false
 
 }, {
 
   // host rehost
-  "checked": true,
   "contexts": ["image"],
   "enabled": true,
+  "icons": {
+    "16": "images/controls/radio_checked_light.png"
+  },
   "id": "menu_item_rehost",
   "parentId": rehost_main_menu_id,
   "targetUrlPatterns": ["*://*/*"],
   "title": browser.i18n.getMessage("menu_item_rehost"),
-  "type": "radio",
+  "type": "normal",
   "viewTypes": ["tab"],
   "visible": true
 
 }, {
 
   // host diberie
-  "checked": false,
   "contexts": ["image"],
   "enabled": true,
+  "icons": {
+    "16": "images/controls/radio_light.png"
+  },
   "id": "menu_item_diberie",
   "parentId": rehost_main_menu_id,
   "targetUrlPatterns": ["*://*/*"],
   "title": browser.i18n.getMessage("menu_item_diberie"),
-  "type": "radio",
+  "type": "normal",
   "viewTypes": ["tab"],
   "visible": true
 
 }, {
 
   // host weserv
-  "checked": false,
   "contexts": ["image"],
   "enabled": true,
+  "icons": {
+    "16": "images/controls/radio_light.png"
+  },
   "id": "menu_item_weserv",
   "parentId": rehost_main_menu_id,
   "targetUrlPatterns": ["*://*/*"],
   "title": browser.i18n.getMessage("menu_item_weserv"),
-  "type": "radio",
+  "type": "normal",
   "viewTypes": ["tab"],
   "visible": true
 
@@ -367,112 +379,128 @@ const default_menu = [{
 }, {
 
   // option notifications
-  "checked": true,
   "contexts": ["image"],
-  "enabled": true,
+  "enabled": false,
+  "icons": {
+    "16": "images/controls/checkbox_checked_light.png"
+  },
   "id": "submenu_item_notifications",
   "parentId": options_sub_menu_id,
   "targetUrlPatterns": ["*://*/*"],
   "title": browser.i18n.getMessage("menu_item_notifications"),
-  "type": "checkbox",
+  "type": "normal",
   "viewTypes": ["tab"],
-  "visible": true
+  "visible": false
 
 }, {
 
   // option link image
-  "checked": true,
   "contexts": ["image"],
-  "enabled": true,
+  "enabled": false,
+  "icons": {
+    "16": "images/controls/radio_checked_light.png"
+  },
   "id": "submenu_item_link_image",
   "parentId": options_sub_menu_id,
   "targetUrlPatterns": ["*://*/*"],
   "title": browser.i18n.getMessage("menu_item_link_image"),
-  "type": "radio",
+  "type": "normal",
   "viewTypes": ["tab"],
-  "visible": true
+  "visible": false
 
 }, {
 
   // option link page
-  "checked": false,
   "contexts": ["image"],
-  "enabled": true,
+  "enabled": false,
+  "icons": {
+    "16": "images/controls/radio_light.png"
+  },
   "id": "submenu_item_link_page",
   "parentId": options_sub_menu_id,
   "targetUrlPatterns": ["*://*/*"],
   "title": browser.i18n.getMessage("menu_item_link_page"),
-  "type": "radio",
+  "type": "normal",
   "viewTypes": ["tab"],
-  "visible": true
+  "visible": false
 
 }, {
 
   // option break
-  "checked": false,
   "contexts": ["image"],
-  "enabled": true,
+  "enabled": false,
+  "icons": {
+    "16": "images/controls/checkbox_checked_light.png"
+  },
   "id": "submenu_item_break",
   "parentId": options_sub_menu_id,
   "targetUrlPatterns": ["*://*/*"],
   "title": browser.i18n.getMessage("menu_item_break"),
-  "type": "checkbox",
+  "type": "normal",
   "viewTypes": ["tab"],
-  "visible": true
+  "visible": false
 
 }, {
 
   // option notifications
-  "checked": true,
   "contexts": ["image"],
   "enabled": true,
+  "icons": {
+    "16": "images/controls/checkbox_checked_light.png"
+  },
   "id": "menu_item_notifications",
   "parentId": rehost_main_menu_id,
   "targetUrlPatterns": ["*://*/*"],
   "title": browser.i18n.getMessage("menu_item_notifications"),
-  "type": "checkbox",
+  "type": "normal",
   "viewTypes": ["tab"],
   "visible": true
 
 }, {
 
   // option link image
-  "checked": true,
   "contexts": ["image"],
   "enabled": true,
+  "icons": {
+    "16": "images/controls/radio_checked_light.png"
+  },
   "id": "menu_item_link_image",
   "parentId": rehost_main_menu_id,
   "targetUrlPatterns": ["*://*/*"],
   "title": browser.i18n.getMessage("menu_item_link_image"),
-  "type": "radio",
+  "type": "normal",
   "viewTypes": ["tab"],
   "visible": true
 
 }, {
 
   // option link page
-  "checked": false,
   "contexts": ["image"],
   "enabled": true,
+  "icons": {
+    "16": "images/controls/radio_light.png"
+  },
   "id": "menu_item_link_page",
   "parentId": rehost_main_menu_id,
   "targetUrlPatterns": ["*://*/*"],
   "title": browser.i18n.getMessage("menu_item_link_page"),
-  "type": "radio",
+  "type": "normal",
   "viewTypes": ["tab"],
   "visible": true
 
 }, {
 
   // option break
-  "checked": false,
   "contexts": ["image"],
   "enabled": true,
+  "icons": {
+    "16": "images/controls/checkbox_checked_light.png"
+  },
   "id": "menu_item_break",
   "parentId": rehost_main_menu_id,
   "targetUrlPatterns": ["*://*/*"],
   "title": browser.i18n.getMessage("menu_item_break"),
-  "type": "checkbox",
+  "type": "normal",
   "viewTypes": ["tab"],
   "visible": true
 
@@ -480,9 +508,9 @@ const default_menu = [{
 
 function menu_creation(p_debug) {
   if(browser.runtime.lastError) {
-    error_message("browser.menus.create", browser.runtime.lastError);
+    error_message("menu.js", "browser.menus.create", browser.runtime.lastError);
   } else {
-    debug_message("browser.menus.create", p_debug);
+    debug_message("menu.js", "browser.menus.create", p_debug);
   }
 }
 
@@ -720,7 +748,7 @@ function update_menu() {
   }
   // separator 3 configuration / histories
   if((g_options["temporary"] === true || g_options["history"] === true) &&
-     (g_options["menu_temporary"] === true || g_options["menu_history"] === true)) {
+    (g_options["menu_temporary"] === true || g_options["menu_history"] === true)) {
     l_promises.push(browser.menus.update("menu_item_separator_3", {
       "enabled": true,
       "visible": true
@@ -886,7 +914,8 @@ function update_menu() {
   }
   // option link image
   // option link page
-  if(g_options["host"] !== "TODO" && g_options["host"] !== "TODO") {
+  //if(g_options["host"] !== "TODO" && g_options["host"] !== "TODO") {
+  if(false) { // TODO
     l_promises.push(browser.menus.update("submenu_item_link_image", {
       "enabled": false,
       "visible": false
@@ -905,9 +934,9 @@ function update_menu() {
     }));
   }
   Promise.all(l_promises).then(function() {
-    debug_message("update_menu", "ok");
+    debug_message("menu.js", "update_menu", "ok");
   }).catch(function(p_error) {
-    error_message("update_menu", p_error);
+    error_message("menu.js", "update_menu", p_error);
   });
 }
 
@@ -977,55 +1006,127 @@ function refresh_menu(p_gif = false) {
     }
   }
   // dark mode management
-  if(window.matchMedia("(prefers-color-scheme: dark)").matches) {
-    l_promises.push(browser.menus.update("menu_item_configuration", {
-      "icons": {
-        "16": "images/icons/icon_configuration_dark.svg"
-      }
-    }));
-    l_promises.push(browser.menus.update("menu_item_temporary", {
-      "icons": {
-        "16": "images/icons/icon_temporary_dark.svg"
-      }
-    }));
-    l_promises.push(browser.menus.update("menu_item_history", {
-      "icons": {
-        "16": "images/icons/icon_history_dark.svg"
-      }
-    }));
-  } else {
-    l_promises.push(browser.menus.update("menu_item_configuration", {
-      "icons": {
-        "16": "images/icons/icon_configuration_light.svg"
-      }
-    }));
-    l_promises.push(browser.menus.update("menu_item_temporary", {
-      "icons": {
-        "16": "images/icons/icon_temporary_light.svg"
-      }
-    }));
-    l_promises.push(browser.menus.update("menu_item_history", {
-      "icons": {
-        "16": "images/icons/icon_history_light.svg"
-      }
-    }));
+  let l_dark = window.matchMedia("(prefers-color-scheme: dark)").matches ?
+    "_dark" : "_light";
+  l_promises.push(browser.menus.update("menu_item_configuration", {
+    "icons": {
+      "16": "images/icons/icon_configuration" + l_dark + ".svg"
+    }
+  }));
+  l_promises.push(browser.menus.update("menu_item_temporary", {
+    "icons": {
+      "16": "images/icons/icon_temporary" + l_dark + ".svg"
+    }
+  }));
+  l_promises.push(browser.menus.update("menu_item_history", {
+    "icons": {
+      "16": "images/icons/icon_history" + l_dark + ".svg"
+    }
+  }));
+
+  function checked(p_condition) {
+    return p_condition ? "_checked" : "";
   }
+  l_promises.push(browser.menus.update("submenu_item_rehost", {
+    "icons": {
+      "16": "images/controls/radio" + checked(g_options["host"] === "rehost") +
+        l_dark + ".svg"
+    }
+  }));
+  l_promises.push(browser.menus.update("submenu_item_diberie", {
+    "icons": {
+      "16": "images/controls/radio" + checked(g_options["host"] === "diberie") +
+        l_dark + ".svg"
+    }
+  }));
+  l_promises.push(browser.menus.update("submenu_item_weserv", {
+    "icons": {
+      "16": "images/controls/radio" + checked(g_options["host"] === "weserv") +
+        l_dark + ".svg"
+    }
+  }));
+  l_promises.push(browser.menus.update("menu_item_rehost", {
+    "icons": {
+      "16": "images/controls/radio" + checked(g_options["host"] === "rehost") +
+        l_dark + ".svg"
+    }
+  }));
+  l_promises.push(browser.menus.update("menu_item_diberie", {
+    "icons": {
+      "16": "images/controls/radio" + checked(g_options["host"] === "diberie") +
+        l_dark + ".svg"
+    }
+  }));
+  l_promises.push(browser.menus.update("menu_item_weserv", {
+    "icons": {
+      "16": "images/controls/radio" + checked(g_options["host"] === "weserv") +
+        l_dark + ".svg"
+    }
+  }));
+  l_promises.push(browser.menus.update("submenu_item_notifications", {
+    "icons": {
+      "16": "images/controls/checkbox" + checked(g_options["notifications"] === true) +
+        l_dark + ".svg"
+    }
+  }));
+  l_promises.push(browser.menus.update("submenu_item_link_image", {
+    "icons": {
+      "16": "images/controls/radio" + checked(g_options["link"] === "image") +
+        l_dark + ".svg"
+    }
+  }));
+  l_promises.push(browser.menus.update("submenu_item_link_page", {
+    "icons": {
+      "16": "images/controls/radio" + checked(g_options["link"] === "page") +
+        l_dark + ".svg"
+    }
+  }));
+  l_promises.push(browser.menus.update("submenu_item_break", {
+    "icons": {
+      "16": "images/controls/checkbox" + checked(g_options["break"] === true) +
+        l_dark + ".svg"
+    }
+  }));
+  l_promises.push(browser.menus.update("menu_item_notifications", {
+    "icons": {
+      "16": "images/controls/checkbox" + checked(g_options["notifications"] === true) +
+        l_dark + ".svg"
+    }
+  }));
+  l_promises.push(browser.menus.update("menu_item_link_image", {
+    "icons": {
+      "16": "images/controls/radio" + checked(g_options["link"] === "image") +
+        l_dark + ".svg"
+    }
+  }));
+  l_promises.push(browser.menus.update("menu_item_link_page", {
+    "icons": {
+      "16": "images/controls/radio" + checked(g_options["link"] === "page") +
+        l_dark + ".svg"
+    }
+  }));
+  l_promises.push(browser.menus.update("menu_item_break", {
+    "icons": {
+      "16": "images/controls/checkbox" + checked(g_options["break"] === true) +
+        l_dark + ".svg"
+    }
+  }));
   Promise.all(l_promises).then(function() {
-    debug_message("refresh_menu", "ok");
+    debug_message("menu.js", "refresh_menu", "ok");
     browser.menus.refresh().then(function() {
-      debug_message("browser.menus.refresh", "ok");
+      debug_message("menu.js", "browser.menus.refresh", "ok");
     }).catch(function(p_error) {
-      error_message("browser.menus.refresh", p_error);
+      error_message("menu.js", "browser.menus.refresh", p_error);
     });
   }).catch(function(p_error) {
-    error_message("refresh_menu", p_error);
+    error_message("menu.js", "refresh_menu", p_error);
   });
 }
 
 const gif_regexp = /.*\.gif([&?].*)?$/i;
 
 browser.menus.onShown.addListener(function(p_infos) {
-  debug_message("browser.menus.onShown", p_infos);
+  debug_message("menu.js", "browser.menus.onShown", p_infos);
   if(p_infos["mediaType"] === "image" && p_infos["srcUrl"]) {
     refresh_menu(gif_regexp.test(p_infos["srcUrl"]));
   }
