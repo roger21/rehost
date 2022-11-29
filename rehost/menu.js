@@ -508,9 +508,13 @@ const default_menu = [{
 
 function menu_creation(p_debug) {
   if(browser.runtime.lastError) {
-    error_message("menu.js", "browser.menus.create", browser.runtime.lastError);
+    error_message("menu.js",
+      "menu_creation browser.menus.create",
+      browser.runtime.lastError);
   } else {
-    debug_message("menu.js", "browser.menus.create", p_debug);
+    debug_message("menu.js",
+      "menu_creation browser.menus.create",
+      p_debug);
   }
 }
 
@@ -934,9 +938,13 @@ function update_menu() {
     }));
   }
   Promise.all(l_promises).then(function() {
-    debug_message("menu.js", "update_menu", "ok");
+    debug_message("menu.js",
+      "update_menu Promise.all",
+      "ok");
   }).catch(function(p_error) {
-    error_message("menu.js", "update_menu", p_error);
+    error_message("menu.js",
+      "update_menu Promise.all",
+      p_error);
   });
 }
 
@@ -1023,7 +1031,7 @@ function refresh_menu(p_gif = false) {
       "16": "images/icons/icon_history" + l_dark + ".svg"
     }
   }));
-
+  // check mark management
   function checked(p_condition) {
     return p_condition ? "_checked" : "";
   }
@@ -1112,21 +1120,31 @@ function refresh_menu(p_gif = false) {
     }
   }));
   Promise.all(l_promises).then(function() {
-    debug_message("menu.js", "refresh_menu", "ok");
+    debug_message("menu.js",
+      "refresh_menu Promise.all",
+      "ok");
     browser.menus.refresh().then(function() {
-      debug_message("menu.js", "browser.menus.refresh", "ok");
+      debug_message("menu.js",
+        "refresh_menu browser.menus.refresh",
+        "ok");
     }).catch(function(p_error) {
-      error_message("menu.js", "browser.menus.refresh", p_error);
+      error_message("menu.js",
+        "refresh_menu browser.menus.refresh",
+        p_error);
     });
   }).catch(function(p_error) {
-    error_message("menu.js", "refresh_menu", p_error);
+    error_message("menu.js",
+      "refresh_menu Promise.all",
+      p_error);
   });
 }
 
 const gif_regexp = /.*\.gif([&?].*)?$/i;
 
 browser.menus.onShown.addListener(function(p_infos) {
-  debug_message("menu.js", "browser.menus.onShown", p_infos);
+  debug_message("menu.js",
+    "browser.menus.onShown",
+    p_infos);
   if(p_infos["mediaType"] === "image" && p_infos["srcUrl"]) {
     refresh_menu(gif_regexp.test(p_infos["srcUrl"]));
   }

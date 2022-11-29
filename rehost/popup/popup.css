@@ -51,46 +51,46 @@ p > span{
   background-repeat:no-repeat;
 }
 p > span.radio{
-  background-image:url("../images/controls/radio_light.svg");
+  background-image:url("/images/controls/radio_light.svg");
 }
 p > span.radio.checked{
-  background-image:url("../images/controls/radio_checked_light.svg");
+  background-image:url("/images/controls/radio_checked_light.svg");
 }
 p > span.checkbox{
-  background-image:url("../images/controls/checkbox_light.svg");
+  background-image:url("/images/controls/checkbox_light.svg");
 }
 p > span.checkbox.checked{
-  background-image:url("../images/controls/checkbox_checked_light.svg");
+  background-image:url("/images/controls/checkbox_checked_light.svg");
 }
 p#configuration > span{
-  background-image:url("../images/icons/icon_configuration_light.svg");
+  background-image:url("/images/icons/icon_configuration_light.svg");
 }
 p#temporary > span{
-  background-image:url("../images/icons/icon_temporary_light.svg");
+  background-image:url("/images/icons/icon_temporary_light.svg");
 }
 p#history > span{
-  background-image:url("../images/icons/icon_history_light.svg");
+  background-image:url("/images/icons/icon_history_light.svg");
 }
 @media (prefers-color-scheme: dark) {
   p > span.radio{
-    background-image:url("../images/controls/radio_dark.svg");
+    background-image:url("/images/controls/radio_dark.svg");
   }
   p > span.radio.checked{
-    background-image:url("../images/controls/radio_checked_dark.svg");
+    background-image:url("/images/controls/radio_checked_dark.svg");
   }
   p > span.checkbox{
-    background-image:url("../images/controls/checkbox_dark.svg");
+    background-image:url("/images/controls/checkbox_dark.svg");
   }
   p > span.checkbox.checked{
-    background-image:url("../images/controls/checkbox_checked_dark.svg");
+    background-image:url("/images/controls/checkbox_checked_dark.svg");
   }
   p#configuration > span{
-    background-image:url("../images/icons/icon_configuration_dark.svg");
+    background-image:url("/images/icons/icon_configuration_dark.svg");
   }
   p#temporary > span{
-    background-image:url("../images/icons/icon_temporary_dark.svg");
+    background-image:url("/images/icons/icon_temporary_dark.svg");
   }
   p#history > span{
-    background-image:url("../images/icons/icon_history_dark.svg");
+    background-image:url("/images/icons/icon_history_dark.svg");
   }
 }

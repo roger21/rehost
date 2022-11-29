@@ -2,6 +2,10 @@ const default_options = {
   "host": "rehost", // "rehost", "diberie", "weserv"
   "temporary": true, // TODO false,
   "history": true, // TODO false,
+  "notifications": true,
+  "link": "image", // "image", "page"
+  "break": false,
+  "without": true,
   "menu_hosts": true, // false, true, "sub"
   "menu_configuration": true,
   "menu_temporary": true,
@@ -14,10 +18,6 @@ const default_options = {
   "popup_temporary": true,
   "popup_history": true,
   "popup_options": true,
-  "notifications": true,
-  "link": "image", // "image", "page"
-  "break": true,
-  "without": true,
   "rehost_medium": true,
   "rehost_preview": true,
   "rehost_thumbnail": true,
@@ -39,30 +39,46 @@ function init_options(p_do_something) {
   }).then(function(p_data) {
     g_options = p_data["options"];
     debug_message("storage.js",
-      "init_options browser.storage.local.get options -> g_options", g_options);
+      "init_options browser.storage.local.get options",
+      g_options);
     p_do_something();
   }).catch(function(p_error) {
-    error_message("storage.js", "init_options browser.storage.local.get", p_error);
+    error_message("storage.js",
+      "init_options browser.storage.local.get options",
+      p_error);
   });
 }
 
-
 function message_handler(p_message, p_sender, p_send_response) {
-  debug_message("storage.js", "message_handler", p_message);
-  switch(p_message) {
-    case "get_options":
-      //return new Promise(function(p_resolve) {
-      //  p_resolve(g_options);
-      //});
-      //return Promise.resolve(g_options);
-      p_send_response(g_options);
-      break;
-    case "set_options":
-      break;
-    case "get_temporary":
-      break;
-    case "get_history":
-      break;
+  debug_message("storage.js",
+    "message_handler",
+    p_message);
+  if(p_message === "get_options") {
+    p_send_response(g_options);
+  } else if(p_message.startsWith("popup_")) {
+    let l_message = p_message.split("_");
+    switch(l_message[1]) {
+      case "host":
+        g_options["host"] = l_message[2];
+        break;
+      case "link":
+        g_options["link"] = l_message[2];
+        break;
+      default:
+        g_options[l_message[1]] = !g_options[l_message[1]];
+        break;
+    }
+    browser.storage.local.set({
+      "options": g_options
+    }).then(function() {
+      debug_message("storage.js",
+        "message_handler browser.storage.local.set options",
+        "ok");
+    }).catch(function(p_error) {
+      error_message("storage.js",
+        "message_handler browser.storage.local.set options",
+        p_error);
+    });
   }
 }
 browser.runtime.onMessage.addListener(message_handler);

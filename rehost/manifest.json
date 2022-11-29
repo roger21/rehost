@@ -36,7 +36,7 @@
 
   "options_ui": {
     "page": "options/options.html",
-    "browser_style": true
+    "browser_style": false
   },
 
   "browser_action": {

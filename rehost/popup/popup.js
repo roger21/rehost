@@ -15,45 +15,111 @@ function debug_message(p_file, p_action, p_message) {
 let g_options;
 
 function update_popup() {
-  document.querySelector("p#host_rehost > span")
+  document.querySelector("p#popup_host_rehost > span")
     .classList.toggle("checked", g_options["host"] === "rehost");
-  document.querySelector("p#host_diberie > span")
+  document.querySelector("p#popup_host_diberie > span")
     .classList.toggle("checked", g_options["host"] === "diberie");
-  document.querySelector("p#host_weserv > span")
+  document.querySelector("p#popup_host_weserv > span")
     .classList.toggle("checked", g_options["host"] === "weserv");
-  document.querySelector("p#notifications > span")
+  document.querySelector("p#popup_notifications > span")
     .classList.toggle("checked", g_options["notifications"] === true);
-  document.querySelector("p#link_image > span")
+  document.querySelector("p#popup_link_image > span")
     .classList.toggle("checked", g_options["link"] === "image");
-  document.querySelector("p#link_page > span")
+  document.querySelector("p#popup_link_page > span")
     .classList.toggle("checked", g_options["link"] === "page");
-  document.querySelector("p#break > span")
+  document.querySelector("p#popup_break > span")
     .classList.toggle("checked", g_options["break"] === true);
   //if(g_options["host"] !== "TODO" && g_options["host"] !== "TODO") {
   if(false) { // TODO
-    document.querySelector("p#link_image").style.display = "none";
-    document.querySelector("p#link_page").style.display = "none";
+    document.querySelector("p#popup_link_image").style.display = "none";
+    document.querySelector("p#popup_link_page").style.display = "none";
   } else {
-    document.querySelector("p#link_image").style.display = "";
-    document.querySelector("p#link_page").style.display = "";
+    document.querySelector("p#popup_link_image").style.display = "";
+    document.querySelector("p#popup_link_page").style.display = "";
   }
-  debug_message("popup.js", "update_popup", "ok");
+  debug_message("popup.js",
+    "update_popup",
+    "ok");
+}
+
+function click_action() {
+  let l_id = this.getAttribute("id");
+  debug_message("popup.js",
+    "click_action",
+    l_id);
+  if(l_id.startsWith("popup_")) {
+    if(this.querySelector("span.radio.checked") === null) {
+      browser.runtime.sendMessage(l_id).then(function() {
+        debug_message("popup.js",
+          "click_action browser.runtime.sendMessage " + l_id,
+          "ok");
+        window.close();
+      }).catch(function(p_error) {
+        error_message("popup.js",
+          "click_action browser.runtime.sendMessage " + l_id,
+          p_error);
+        window.close();
+      });
+    } else {
+      window.close();
+    }
+  } else if(l_id === "configuration") {
+    browser.runtime.openOptionsPage().then(function() {
+      debug_message("popup.js",
+        "click_action browser.runtime.openOptionsPage",
+        "ok");
+      window.close();
+    }).catch(function(p_error) {
+      error_message("popup.js",
+        "click_action browser.runtime.openOptionsPage",
+        p_error);
+      window.close();
+    });
+  } else {
+    browser.tabs.create({
+      url: "/histories/" + l_id + ".html"
+    }).then(function() {
+      debug_message("popup.js",
+        "click_action browser.tabs.create " + l_id,
+        "ok");
+      window.close();
+    }).catch(function(p_error) {
+      error_message("popup.js",
+        "click_action browser.tabs.create " + l_id,
+        p_error);
+      window.close();
+    });
+  }
 }
 
 window.addEventListener("load", function() {
-  // i18n
+  // disable contextmenu on the popup
+  document.querySelector("body").addEventListener("contextmenu", function(p_event) {
+    p_event.preventDefault();
+    p_event.stopPropagation();
+  }, true);
+  // i18n of the labels
   let l_trans = document.querySelectorAll(".trans");
   for(let l_tran of l_trans) {
     l_tran.firstChild.nodeValue = browser.i18n.getMessage(l_tran.firstChild.nodeValue);
   }
+  // actions on click
+  let l_ps = document.querySelectorAll("body > p");
+  for(let l_p of l_ps) {
+    l_p.addEventListener("click", click_action, false);
+  }
   // get options and update_popup
   browser.runtime.sendMessage("get_options").then(function(p_data) {
     g_options = p_data;
-    debug_message("popup.js", "sendMessage get_options", g_options);
+    debug_message("popup.js",
+      "load browser.runtime.sendMessage get_options",
+      g_options);
     update_popup();
     // loaded
     document.querySelector("body").classList.toggle("loading");
   }).catch(function(p_error) {
-    error_message("popup.js", "sendMessage get_options", p_error);
+    error_message("popup.js",
+      "load browser.runtime.sendMessage get_options",
+      p_error);
   });
 }, false);
