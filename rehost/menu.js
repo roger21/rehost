@@ -300,6 +300,7 @@ const default_menu = [{
     "16": "images/icons/icon_configuration_light.svg"
   },
   "id": "menu_item_configuration",
+  "onclick": do_configuration,
   "parentId": rehost_main_menu_id,
   "targetUrlPatterns": ["*://*/*"],
   "title": browser.i18n.getMessage("menu_item_configuration"),
@@ -328,6 +329,7 @@ const default_menu = [{
     "16": "images/icons/icon_temporary_light.svg"
   },
   "id": "menu_item_temporary",
+  "onclick": do_temporary,
   "parentId": rehost_main_menu_id,
   "targetUrlPatterns": ["*://*/*"],
   "title": browser.i18n.getMessage("menu_item_temporary"),
@@ -344,6 +346,7 @@ const default_menu = [{
     "16": "images/icons/icon_history_light.svg"
   },
   "id": "menu_item_history",
+  "onclick": do_history,
   "parentId": rehost_main_menu_id,
   "targetUrlPatterns": ["*://*/*"],
   "title": browser.i18n.getMessage("menu_item_history"),
@@ -1152,11 +1155,22 @@ browser.menus.onShown.addListener(function(p_infos) {
 
 init_options(update_menu);
 
-
-/*
-
-  browser.menus.onClicked.addListener((info, tab) => {
-  console.log("moi Rehost onClicked", info, tab);
+function do_configuration() {
+  browser.runtime.openOptionsPage().then(function() {
+    debug_message("menu.js",
+      "do_configuration browser.runtime.openOptionsPage",
+      "ok");
+  }).catch(function(p_error) {
+    error_message("menu.js",
+      "do_configuration browser.runtime.openOptionsPage",
+      p_error);
   });
+}
 
-*/
+function do_temporary() {
+  open_histories("temporary");
+}
+
+function do_history() {
+  open_histories("history");
+}

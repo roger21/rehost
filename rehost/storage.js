@@ -49,6 +49,61 @@ function init_options(p_do_something) {
   });
 }
 
+function open_histories(p_kind) {
+  let l_histories_url = browser.runtime.getURL("/histories/" + p_kind + ".html");
+  browser.tabs.query({
+    "url": l_histories_url
+  }).then(function(p_tabs) {
+    debug_message("storage.js",
+      "open_histories browser.tabs.query " + p_kind,
+      p_tabs);
+    let l_found = false;
+    for(const l_tab of p_tabs) {
+      l_found = true;
+      browser.tabs.update(l_tab["id"], {
+        "active": true
+      }).then(function(p_tab) {
+        debug_message("storage.js",
+          "open_histories browser.tabs.update " + p_kind,
+          p_tab);
+        browser.windows.update(l_tab["windowId"], {
+          "focused": true
+        }).then(function(p_windows) {
+          debug_message("storage.js",
+            "open_histories browser.windows.update " + p_kind,
+            p_windows);
+        }).catch(function(p_error) {
+          error_message("storage.js",
+            "open_histories browser.windows.update " + p_kind,
+            p_error);
+        });
+      }).catch(function(p_error) {
+        error_message("storage.js",
+          "open_histories browser.tabs.update " + p_kind,
+          p_error);
+      });
+      break;
+    }
+    if(!l_found) {
+      browser.tabs.create({
+        url: "/histories/" + p_kind + ".html"
+      }).then(function(p_tab) {
+        debug_message("storage.js",
+          "open_histories browser.tabs.create " + p_kind,
+          p_tab);
+      }).catch(function(p_error) {
+        error_message("storage.js",
+          "open_histories browser.tabs.create " + p_kind,
+          p_error);
+      });
+    }
+  }).catch(function(p_error) {
+    error_message("storage.js",
+      "open_histories browser.tabs.query " + p_kind,
+      p_error);
+  });
+}
+
 function message_handler(p_message, p_sender, p_send_response) {
   debug_message("storage.js",
     "message_handler",
@@ -64,7 +119,7 @@ function message_handler(p_message, p_sender, p_send_response) {
       case "link":
         g_options["link"] = l_message[2];
         break;
-      default:
+      default: // notifications, break
         g_options[l_message[1]] = !g_options[l_message[1]];
         break;
     }
@@ -79,6 +134,9 @@ function message_handler(p_message, p_sender, p_send_response) {
         "message_handler browser.storage.local.set options",
         p_error);
     });
+  } else if((g_options["temporary"] === true && p_message === "temporary") ||
+    (g_options["history"] === true && p_message === "history")) {
+    open_histories(p_message);
   }
 }
 browser.runtime.onMessage.addListener(message_handler);

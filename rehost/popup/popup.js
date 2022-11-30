@@ -1,14 +1,14 @@
-let g_debug = true;
+const g_debug = true;
 
 function error_message(p_file, p_action, p_error) {
   console.log("ERROR extension " + browser.i18n.getMessage("extension_name") +
-    " : " + p_file + " : " + p_action + " : ", p_error);
+    " : " + p_file + " : " + p_action + " :", p_error);
 }
 
 function debug_message(p_file, p_action, p_message) {
   if(g_debug) {
     console.log("DEBUG extension " + browser.i18n.getMessage("extension_name") +
-      " : " + p_file + " : " + p_action + " : ", p_message);
+      " : " + p_file + " : " + p_action + " :", p_message);
   }
 }
 
@@ -76,16 +76,14 @@ function click_action() {
       window.close();
     });
   } else {
-    browser.tabs.create({
-      url: "/histories/" + l_id + ".html"
-    }).then(function() {
+    browser.runtime.sendMessage(l_id).then(function() {
       debug_message("popup.js",
-        "click_action browser.tabs.create " + l_id,
+        "click_action browser.runtime.sendMessage " + l_id,
         "ok");
       window.close();
     }).catch(function(p_error) {
       error_message("popup.js",
-        "click_action browser.tabs.create " + l_id,
+        "click_action browser.runtime.sendMessage " + l_id,
         p_error);
       window.close();
     });
@@ -100,12 +98,12 @@ window.addEventListener("load", function() {
   }, true);
   // i18n of the labels
   let l_trans = document.querySelectorAll(".trans");
-  for(let l_tran of l_trans) {
+  for(const l_tran of l_trans) {
     l_tran.firstChild.nodeValue = browser.i18n.getMessage(l_tran.firstChild.nodeValue);
   }
   // actions on click
   let l_ps = document.querySelectorAll("body > p");
-  for(let l_p of l_ps) {
+  for(const l_p of l_ps) {
     l_p.addEventListener("click", click_action, false);
   }
   // get options and update_popup
