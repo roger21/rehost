@@ -1,22 +1,22 @@
 const default_options = {
   "host": "rehost", // "rehost", "diberie", "weserv"
-  "temporary": true, // TODO false,
   "history": true, // TODO false,
+  "temporary": true, // TODO false,
   "notifications": true,
   "link": "image", // "image", "page"
   "break": false,
   "without": true,
   "menu_hosts": true, // false, true, "sub"
   "menu_configuration": true,
-  "menu_temporary": true,
   "menu_history": true,
+  "menu_temporary": true,
   "menu_options": true, // false, true, "sub"
   "popup_popup": true,
-  "popup_action": "configuration", // "configuration", "temporary", "history"
+  "popup_action": "configuration", // "configuration", "history", "temporary"
   "popup_hosts": true,
   "popup_configuration": true,
-  "popup_temporary": true,
   "popup_history": true,
+  "popup_temporary": true,
   "popup_options": true,
   "rehost_medium": true,
   "rehost_preview": true,
@@ -45,6 +45,35 @@ function init_options(p_do_something) {
   }).catch(function(p_error) {
     error_message("storage.js",
       "init_options browser.storage.local.get options",
+      p_error);
+  });
+}
+
+function update_options(p_1, p_2) {
+  debug_message("storage.js",
+    "update_options",
+    [p_1, p_2]);
+  switch(p_1) {
+    case "host":
+      g_options["host"] = p_2;
+      break;
+    case "link":
+      g_options["link"] = p_2;
+      break;
+    default: // notifications, break
+      g_options[p_1] = !g_options[p_1];
+      break;
+  }
+  browser.storage.local.set({
+    "options": g_options
+  }).then(function() {
+    debug_message("storage.js",
+      "update_options browser.storage.local.set options",
+      "ok");
+    update_menu();
+  }).catch(function(p_error) {
+    error_message("storage.js",
+      "update_options browser.storage.local.set options",
       p_error);
   });
 }
@@ -112,30 +141,9 @@ function message_handler(p_message, p_sender, p_send_response) {
     p_send_response(g_options);
   } else if(p_message.startsWith("popup_")) {
     let l_message = p_message.split("_");
-    switch(l_message[1]) {
-      case "host":
-        g_options["host"] = l_message[2];
-        break;
-      case "link":
-        g_options["link"] = l_message[2];
-        break;
-      default: // notifications, break
-        g_options[l_message[1]] = !g_options[l_message[1]];
-        break;
-    }
-    browser.storage.local.set({
-      "options": g_options
-    }).then(function() {
-      debug_message("storage.js",
-        "message_handler browser.storage.local.set options",
-        "ok");
-    }).catch(function(p_error) {
-      error_message("storage.js",
-        "message_handler browser.storage.local.set options",
-        p_error);
-    });
-  } else if((g_options["temporary"] === true && p_message === "temporary") ||
-    (g_options["history"] === true && p_message === "history")) {
+    update_options(l_message[1], l_message[2]);
+  } else if((g_options["history"] === true && p_message === "history") ||
+    (g_options["temporary"] === true && p_message === "temporary")) {
     open_histories(p_message);
   }
 }

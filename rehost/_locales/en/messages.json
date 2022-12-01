@@ -60,17 +60,17 @@
     "description": "Title of the sub menu for hosts."
   },
 
-  "menu_item_rehost": {
+  "menu_item_host_rehost": {
     "message": "reho.st",
     "description": "Title of the menu item reho.st."
   },
 
-  "menu_item_diberie": {
+  "menu_item_host_diberie": {
     "message": "diberie.com",
     "description": "Title of the menu item diberie.com."
   },
 
-  "menu_item_weserv": {
+  "menu_item_host_weserv": {
     "message": "weserv.nl",
     "description": "Title of the menu item weserv.nl."
   },
@@ -80,14 +80,14 @@
     "description": "Title of the menu item configuration."
   },
 
-  "menu_item_temporary": {
-    "message": "Temporary history",
-    "description": "Title of the menu item temporary history."
-  },
-
   "menu_item_history": {
     "message": "History",
     "description": "Title of the menu item history."
+  },
+
+  "menu_item_temporary": {
+    "message": "Temporary history",
+    "description": "Title of the menu item temporary history."
   },
 
   "options_sub_menu": {
@@ -120,17 +120,17 @@
     "description": "Title of the popup page."
   },
 
-  "popup_label_rehost": {
+  "popup_label_host_rehost": {
     "message": "reho.st",
     "description": "Label for the host reho.st in the popup."
   },
 
-  "popup_label_diberie": {
+  "popup_label_host_diberie": {
     "message": "diberie.com",
     "description": "Label for the host diberie.com in the popup."
   },
 
-  "popup_label_weserv": {
+  "popup_label_host_weserv": {
     "message": "weserv.nl",
     "description": "Label for the host weserv.nl in the popup."
   },
@@ -140,14 +140,14 @@
     "description": "Label for the configuration in the popup."
   },
 
-  "popup_label_temporary": {
-    "message": "Temporary history",
-    "description": "Label for the temporary history page in the popup."
-  },
-
   "popup_label_history": {
     "message": "History",
     "description": "Label for the history page in the popup."
+  },
+
+  "popup_label_temporary": {
+    "message": "Temporary history",
+    "description": "Label for the temporary history page in the popup."
   },
 
   "popup_label_notifications": {
@@ -157,12 +157,12 @@
 
   "popup_label_link_image": {
     "message": "Link to the image",
-    "description": "Label for the option link to image in the popup."
+    "description": "Label for the option link to the image in the popup."
   },
 
   "popup_label_link_page": {
     "message": "Link to the page",
-    "description": "Label for the option link to page in the popup."
+    "description": "Label for the option link to the page in the popup."
   },
 
   "popup_label_break": {

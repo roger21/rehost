@@ -47,7 +47,7 @@ function click_action() {
   debug_message("popup.js",
     "click_action",
     l_id);
-  if(l_id.startsWith("popup_")) {
+  if(l_id.startsWith("popup_")) { // radios and checkboxes
     if(this.querySelector("span.radio.checked") === null) {
       browser.runtime.sendMessage(l_id).then(function() {
         debug_message("popup.js",
@@ -75,7 +75,7 @@ function click_action() {
         p_error);
       window.close();
     });
-  } else {
+  } else { // history and temporary
     browser.runtime.sendMessage(l_id).then(function() {
       debug_message("popup.js",
         "click_action browser.runtime.sendMessage " + l_id,
