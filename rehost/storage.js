@@ -1,5 +1,5 @@
 const default_options = {
-  "host": "rehost", // "rehost", "diberie", "weserv"
+  "host": "rehost", // "rehost", "diberie", "wsrvnl"
   "history": true, // TODO false,
   "temporary": true, // TODO false,
   "notifications": true,
@@ -23,12 +23,12 @@ const default_options = {
   "rehost_thumbnail": true,
   "diberie_medium": true,
   "diberie_mini": true,
-  "weserv_large": true,
-  "weserv_grand": true,
-  "weserv_medium": true,
-  "weserv_preview": true,
-  "weserv_tumbnail": true,
-  "weserv_mini": true
+  "wsrvnl_large": true,
+  "wsrvnl_grand": true,
+  "wsrvnl_medium": true,
+  "wsrvnl_preview": true,
+  "wsrvnl_tumbnail": true,
+  "wsrvnl_mini": true
 };
 
 let g_options;

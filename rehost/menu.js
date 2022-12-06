@@ -23,6 +23,7 @@ const default_menu = [{
     "16": "images/icons/icon_without.png"
   },
   "id": "menu_item_without",
+  "onclick": do_rehost,
   "parentId": rehost_main_menu_id,
   "targetUrlPatterns": ["*://*/*"],
   "title": browser.i18n.getMessage("menu_item_without"),
@@ -39,6 +40,7 @@ const default_menu = [{
     "16": "images/icons/icon_original.png"
   },
   "id": "menu_item_gif",
+  "onclick": do_rehost,
   "parentId": rehost_main_menu_id,
   "targetUrlPatterns": ["*://*/*"],
   "title": browser.i18n.getMessage("menu_item_gif"),
@@ -55,6 +57,7 @@ const default_menu = [{
     "16": "images/icons/icon_original.png"
   },
   "id": "menu_item_original",
+  "onclick": do_rehost,
   "parentId": rehost_main_menu_id,
   "targetUrlPatterns": ["*://*/*"],
   "title": browser.i18n.getMessage("menu_item_original"),
@@ -71,6 +74,7 @@ const default_menu = [{
     "16": "images/icons/icon_large_grand.png"
   },
   "id": "menu_item_large",
+  "onclick": do_rehost,
   "parentId": rehost_main_menu_id,
   "targetUrlPatterns": ["*://*/*"],
   "title": browser.i18n.getMessage("menu_item_large"),
@@ -87,6 +91,7 @@ const default_menu = [{
     "16": "images/icons/icon_large_grand.png"
   },
   "id": "menu_item_grand",
+  "onclick": do_rehost,
   "parentId": rehost_main_menu_id,
   "targetUrlPatterns": ["*://*/*"],
   "title": browser.i18n.getMessage("menu_item_grand"),
@@ -103,6 +108,7 @@ const default_menu = [{
     "16": "images/icons/icon_medium_preview.png"
   },
   "id": "menu_item_medium",
+  "onclick": do_rehost,
   "parentId": rehost_main_menu_id,
   "targetUrlPatterns": ["*://*/*"],
   "title": browser.i18n.getMessage("menu_item_medium"),
@@ -119,6 +125,7 @@ const default_menu = [{
     "16": "images/icons/icon_medium_preview.png"
   },
   "id": "menu_item_preview",
+  "onclick": do_rehost,
   "parentId": rehost_main_menu_id,
   "targetUrlPatterns": ["*://*/*"],
   "title": browser.i18n.getMessage("menu_item_preview"),
@@ -135,6 +142,7 @@ const default_menu = [{
     "16": "images/icons/icon_thumbnail_mini.png"
   },
   "id": "menu_item_thumbnail",
+  "onclick": do_rehost,
   "parentId": rehost_main_menu_id,
   "targetUrlPatterns": ["*://*/*"],
   "title": browser.i18n.getMessage("menu_item_thumbnail"),
@@ -151,6 +159,7 @@ const default_menu = [{
     "16": "images/icons/icon_thumbnail_mini.png"
   },
   "id": "menu_item_mini",
+  "onclick": do_rehost,
   "parentId": rehost_main_menu_id,
   "targetUrlPatterns": ["*://*/*"],
   "title": browser.i18n.getMessage("menu_item_mini"),
@@ -219,17 +228,17 @@ const default_menu = [{
 
 }, {
 
-  // host weserv
+  // host wsrvnl
   "contexts": ["image"],
   "enabled": false,
   "icons": {
     "16": "images/controls/radio_light.png"
   },
-  "id": "submenu_item_host_weserv",
+  "id": "submenu_item_host_wsrvnl",
   "onclick": do_update,
   "parentId": hosts_sub_menu_id,
   "targetUrlPatterns": ["*://*/*"],
-  "title": browser.i18n.getMessage("menu_item_host_weserv"),
+  "title": browser.i18n.getMessage("menu_item_host_wsrvnl"),
   "type": "normal",
   "viewTypes": ["tab"],
   "visible": false
@@ -270,17 +279,17 @@ const default_menu = [{
 
 }, {
 
-  // host weserv
+  // host wsrvnl
   "contexts": ["image"],
   "enabled": true,
   "icons": {
     "16": "images/controls/radio_light.png"
   },
-  "id": "menu_item_host_weserv",
+  "id": "menu_item_host_wsrvnl",
   "onclick": do_update,
   "parentId": rehost_main_menu_id,
   "targetUrlPatterns": ["*://*/*"],
-  "title": browser.i18n.getMessage("menu_item_host_weserv"),
+  "title": browser.i18n.getMessage("menu_item_host_wsrvnl"),
   "type": "normal",
   "viewTypes": ["tab"],
   "visible": true
@@ -566,7 +575,7 @@ function update_menu() {
     "visible": true
   }));
   // rehost large
-  if(g_options["host"] === "weserv" && g_options["weserv_large"] === true) {
+  if(g_options["host"] === "wsrvnl" && g_options["wsrvnl_large"] === true) {
     l_promises.push(browser.menus.update("menu_item_large", {
       "enabled": true,
       "visible": true
@@ -578,7 +587,7 @@ function update_menu() {
     }));
   }
   // rehost grand
-  if(g_options["host"] === "weserv" && g_options["weserv_grand"] === true) {
+  if(g_options["host"] === "wsrvnl" && g_options["wsrvnl_grand"] === true) {
     l_promises.push(browser.menus.update("menu_item_grand", {
       "enabled": true,
       "visible": true
@@ -592,7 +601,7 @@ function update_menu() {
   // rehost medium
   if((g_options["host"] === "rehost" && g_options["rehost_medium"] === true) ||
     (g_options["host"] === "diberie" && g_options["diberie_medium"] === true) ||
-    (g_options["host"] === "weserv" && g_options["weserv_medium"] === true)) {
+    (g_options["host"] === "wsrvnl" && g_options["wsrvnl_medium"] === true)) {
     l_promises.push(browser.menus.update("menu_item_medium", {
       "enabled": true,
       "visible": true
@@ -605,7 +614,7 @@ function update_menu() {
   }
   // rehost preview
   if((g_options["host"] === "rehost" && g_options["rehost_preview"] === true) ||
-    (g_options["host"] === "weserv" && g_options["weserv_preview"] === true)) {
+    (g_options["host"] === "wsrvnl" && g_options["wsrvnl_preview"] === true)) {
     l_promises.push(browser.menus.update("menu_item_preview", {
       "enabled": true,
       "visible": true
@@ -618,7 +627,7 @@ function update_menu() {
   }
   // rehost thumbnail
   if((g_options["host"] === "rehost" && g_options["rehost_thumbnail"] === true) ||
-    (g_options["host"] === "weserv" && g_options["weserv_thumbnail"] === true)) {
+    (g_options["host"] === "wsrvnl" && g_options["wsrvnl_thumbnail"] === true)) {
     l_promises.push(browser.menus.update("menu_item_thumbnail", {
       "enabled": true,
       "visible": true
@@ -631,7 +640,7 @@ function update_menu() {
   }
   // rehost mini
   if((g_options["host"] === "diberie" && g_options["diberie_mini"] === true) ||
-    (g_options["host"] === "weserv" && g_options["weserv_mini"] === true)) {
+    (g_options["host"] === "wsrvnl" && g_options["wsrvnl_mini"] === true)) {
     l_promises.push(browser.menus.update("menu_item_mini", {
       "enabled": true,
       "visible": true
@@ -646,7 +655,7 @@ function update_menu() {
   // sub hosts
   // host rehost
   // host diberie
-  // host weserv
+  // host wsrvnl
   if(g_options["menu_host"] !== false) {
     l_promises.push(browser.menus.update("menu_item_separator_1", {
       "enabled": true,
@@ -669,7 +678,7 @@ function update_menu() {
       "enabled": false,
       "visible": false
     }));
-    l_promises.push(browser.menus.update("submenu_item_host_weserv", {
+    l_promises.push(browser.menus.update("submenu_item_host_wsrvnl", {
       "enabled": false,
       "visible": false
     }));
@@ -681,7 +690,7 @@ function update_menu() {
       "enabled": false,
       "visible": false
     }));
-    l_promises.push(browser.menus.update("menu_item_host_weserv", {
+    l_promises.push(browser.menus.update("menu_item_host_wsrvnl", {
       "enabled": false,
       "visible": false
     }));
@@ -699,7 +708,7 @@ function update_menu() {
       "enabled": true,
       "visible": true
     }));
-    l_promises.push(browser.menus.update("submenu_item_host_weserv", {
+    l_promises.push(browser.menus.update("submenu_item_host_wsrvnl", {
       "enabled": true,
       "visible": true
     }));
@@ -711,7 +720,7 @@ function update_menu() {
       "enabled": false,
       "visible": false
     }));
-    l_promises.push(browser.menus.update("menu_item_host_weserv", {
+    l_promises.push(browser.menus.update("menu_item_host_wsrvnl", {
       "enabled": false,
       "visible": false
     }));
@@ -729,7 +738,7 @@ function update_menu() {
       "enabled": false,
       "visible": false
     }));
-    l_promises.push(browser.menus.update("submenu_item_host_weserv", {
+    l_promises.push(browser.menus.update("submenu_item_host_wsrvnl", {
       "enabled": false,
       "visible": false
     }));
@@ -741,7 +750,7 @@ function update_menu() {
       "enabled": true,
       "visible": true
     }));
-    l_promises.push(browser.menus.update("menu_item_host_weserv", {
+    l_promises.push(browser.menus.update("menu_item_host_wsrvnl", {
       "enabled": true,
       "visible": true
     }));
@@ -1064,9 +1073,9 @@ function refresh_menu(p_gif = false) {
         l_dark + ".svg"
     }
   }));
-  l_promises.push(browser.menus.update("submenu_item_host_weserv", {
+  l_promises.push(browser.menus.update("submenu_item_host_wsrvnl", {
     "icons": {
-      "16": "images/controls/radio" + checked(g_options["host"] === "weserv") +
+      "16": "images/controls/radio" + checked(g_options["host"] === "wsrvnl") +
         l_dark + ".svg"
     }
   }));
@@ -1082,9 +1091,9 @@ function refresh_menu(p_gif = false) {
         l_dark + ".svg"
     }
   }));
-  l_promises.push(browser.menus.update("menu_item_host_weserv", {
+  l_promises.push(browser.menus.update("menu_item_host_wsrvnl", {
     "icons": {
-      "16": "images/controls/radio" + checked(g_options["host"] === "weserv") +
+      "16": "images/controls/radio" + checked(g_options["host"] === "wsrvnl") +
         l_dark + ".svg"
     }
   }));
@@ -1168,6 +1177,10 @@ browser.menus.onShown.addListener(function(p_infos) {
 });
 
 init_options(update_menu);
+
+function do_rehost(p_item){
+  console.log("do_rehost", p_item);
+}
 
 function do_update(p_item) {
   let l_item = p_item["menuItemId"].split("_");

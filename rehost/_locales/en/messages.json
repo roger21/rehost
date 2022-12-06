@@ -70,9 +70,9 @@
     "description": "Title of the menu item diberie.com."
   },
 
-  "menu_item_host_weserv": {
-    "message": "weserv.nl",
-    "description": "Title of the menu item weserv.nl."
+  "menu_item_host_wsrvnl": {
+    "message": "wsrv.nl",
+    "description": "Title of the menu item wsrv.nl."
   },
 
   "menu_item_configuration": {
@@ -130,9 +130,9 @@
     "description": "Label for the host diberie.com in the popup."
   },
 
-  "popup_label_host_weserv": {
-    "message": "weserv.nl",
-    "description": "Label for the host weserv.nl in the popup."
+  "popup_label_host_wsrvnl": {
+    "message": "wsrv.nl",
+    "description": "Label for the host wsrv.nl in the popup."
   },
 
   "popup_label_configuration": {
