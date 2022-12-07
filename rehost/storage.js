@@ -11,8 +11,7 @@ const default_options = {
   "menu_history": true,
   "menu_temporary": true,
   "menu_options": true, // false, true, "sub"
-  "popup_popup": true,
-  "popup_action": "configuration", // "configuration", "history", "temporary"
+  "popup_action": "configuration", // "popup", "configuration", "history", "temporary"
   "popup_hosts": true,
   "popup_configuration": true,
   "popup_history": true,
@@ -27,19 +26,79 @@ const default_options = {
   "wsrvnl_grand": true,
   "wsrvnl_medium": true,
   "wsrvnl_preview": true,
-  "wsrvnl_tumbnail": true,
+  "wsrvnl_thumbnail": true,
   "wsrvnl_mini": true
 };
 
-let g_options;
+const g_params = {
+  "rehost": {
+    "base": "https://reho.st/",
+    "encode": false,
+    "link": {
+      "image": ""
+    },
+    "gif": "",
+    "original": "",
+    "medium": "medium/",
+    "preview": "preview/",
+    "thumbnail": "thumb/",
+    "image": ""
+  },
+  "diberie": {
+    "base": "https://rehost.diberie.com/Rehost?",
+    "encode": true,
+    "link": {
+      "image": "url="
+    },
+    "gif": "",
+    "original": "",
+    "medium": "size=res&",
+    "mini": "size=min&",
+    "image": "url="
+  },
+  "wsrvnl": {
+    "base": "https://wsrv.nl/?n=-1",
+    "encode": true,
+    "link": {
+      "image": "&url="
+    },
+    "original": "",
+    "large": "&w=1200&we",
+    "grand": "&w=1000&we",
+    "medium": "&w=800&we",
+    "preview": "&w=600&we",
+    "thumbnail": "&w=230&h=230&we",
+    "mini": "&w=150&h=150&we",
+    "image": "&url="
+  }
+}
+
+let g_options = Object.assign({}, default_options);
 
 function init_options(p_do_something) {
   browser.storage.local.get({
     "options": default_options
   }).then(function(p_data) {
-    g_options = p_data["options"];
     debug_message("storage.js",
-      "init_options browser.storage.local.get options",
+      "init_options browser.storage.local.get p_data[\"options\"]",
+      p_data["options"]);
+    for(const l_p in g_options) {
+      debug_message("storage.js",
+        "init_options g_options property",
+        l_p);
+      if(typeof p_data["options"][l_p] !== "undefined") {
+        g_options[l_p] = p_data["options"][l_p];
+        debug_message("storage.js",
+          "init_options p_data[\"options\"] value",
+          p_data["options"][l_p]);
+      }
+    }
+
+    // correction des paramètres qui auraient une ancienne valeur obsolète
+    // en cas de mise à jour des valeurs possibles dans default_options
+
+    debug_message("storage.js",
+      "init_options browser.storage.local.get g_options",
       g_options);
     p_do_something();
   }).catch(function(p_error) {
@@ -56,9 +115,17 @@ function update_options(p_1, p_2) {
   switch(p_1) {
     case "host":
       g_options["host"] = p_2;
+      // force link to image if not host TODO or host TODO ...
+      if(p_2 !== "TODO" && p_2 !== "TODO") {
+        g_options["link"] = "image";
+      }
       break;
     case "link":
       g_options["link"] = p_2;
+      // force link to image if not host TODO or host TODO ...
+      if(g_options["host"] !== "TODO" && g_options["host"] !== "TODO") {
+        g_options["link"] = "image";
+      }
       break;
     default: // notifications, break
       g_options[p_1] = !g_options[p_1];

@@ -944,6 +944,7 @@ function update_menu() {
   }
   // option link image
   // option link page
+  // disable them if not host TODO or host TODO ...
   //if(g_options["host"] !== "TODO" && g_options["host"] !== "TODO") {
   if(false) { // TODO
     l_promises.push(browser.menus.update("submenu_item_link_image", {
@@ -1178,9 +1179,92 @@ browser.menus.onShown.addListener(function(p_infos) {
 
 init_options(update_menu);
 
-function do_rehost(p_item){
-  console.log("do_rehost", p_item);
+function do_rehost(p_item) {
+  let l_size = p_item["menuItemId"].split("_")[2];
+  debug_message("menu.js",
+    "do_rehost",
+    [l_size, p_item]);
+  let l_src = l_size !== "without" && g_params[g_options["host"]]["encode"] ?
+    encodeURIComponent(p_item["srcUrl"]) : p_item["srcUrl"];
+  let l_break = g_options["break"] ? "\n" : "";
+  let l_link_url;
+  let l_image_url;
+  let l_without_rehost = "";
+  if(l_size === "without") {
+    l_link_url = l_image_url = l_src;
+    l_without_rehost = "_without_rehost";
+  } else {
+    l_link_url = g_params[g_options["host"]]["base"] +
+      g_params[g_options["host"]]["link"][g_options["link"]] + l_src;
+    l_image_url = g_params[g_options["host"]]["base"] +
+      g_params[g_options["host"]][l_size] +
+      g_params[g_options["host"]]["image"] + l_src;
+  }
+  let l_clipboard;
+  let l_message_text;
+  // naked link of the rehosted image
+  if(p_item["modifiers"].includes("Shift")) {
+    l_clipboard = l_image_url + l_break;
+    l_message_text = "notification_message_naked_link";
+  }
+  // bbcode of the rehosted image without the surrounding link
+  else if(p_item["modifiers"].includes("Ctrl")) {
+    l_clipboard = "[img]" + l_image_url + "[/img]" + l_break;
+    l_message_text = "notification_message_bbcode_without_link";
+  }
+  // bbcode of the rehosted image with the surrounding link
+  else {
+    l_clipboard = "[url=" + l_link_url + "][img]" + l_image_url + "[/img][/url]" + l_break;
+    l_message_text = "notification_message_bbcode";
+  }
+  navigator.clipboard.writeText(l_clipboard).then(function() {
+    debug_message("menu.js",
+      "do_rehost navigator.clipboard.writeText",
+      l_clipboard);
+  }).catch(function(p_error) {
+    error_message("menu.js",
+      "do_rehost navigator.clipboard.writeText",
+      p_error);
+  });
+  if(g_options["notifications"] === true) {
+    browser.notifications.create({
+      "type": "basic",
+      "title": browser.i18n.getMessage("extension_name"),
+      "message": browser.i18n.getMessage(l_message_text + l_without_rehost, [
+        browser.i18n.getMessage("notification_size_" + l_size),
+        browser.i18n.getMessage("notification_host_" + g_options["host"])
+      ]),
+      "iconUrl": "images/rehost.svg"
+    }).then(function(p_id) {
+      debug_message("menu.js",
+        "do_rehost browser.notifications.create",
+        p_id);
+    }).catch(function(p_error) {
+      error_message("menu.js",
+        "do_rehost browser.notifications.create",
+        p_error);
+    });
+  }
 }
+
+/* buggy as fuck on linux xfce debian bullseye
+browser.notifications.onClicked.addListener(function(p_id){
+  debug_message("menu.js",
+    "browser.notifications.onClicked",
+     p_id);
+  browser.windows.update(browser.windows.WINDOW_ID_CURRENT, {
+    "focused": true
+  }).then(function(p_windows) {
+    debug_message("menu.js",
+      "browser.notifications.onClicked browser.windows.update",
+      p_windows);
+  }).catch(function(p_error) {
+    error_message("menu.js",
+      "browser.notifications.onClicked browser.windows.update",
+       p_error);
+  });
+});
+*/
 
 function do_update(p_item) {
   let l_item = p_item["menuItemId"].split("_");

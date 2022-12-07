@@ -168,6 +168,116 @@
   "popup_label_break": {
     "message": "Add a break",
     "description": "Label for the option add a break in the popup."
+  },
+
+  "notification_size_original": {
+    "message": "the image",
+    "description": "Size of the original image for the notification."
+  },
+
+  "notification_size_large": {
+    "message": "the large image",
+    "description": "Size of the large image for the notification."
+  },
+
+  "notification_size_grand": {
+    "message": "the grand image",
+    "description": "Size of the grand image for the notification."
+  },
+
+  "notification_size_medium": {
+    "message": "the medium image",
+    "description": "Size of the medium image for the notification."
+  },
+
+  "notification_size_preview": {
+    "message": "the preview",
+    "description": "Size of the preview image for the notification."
+  },
+
+  "notification_size_thumbnail": {
+    "message": "the thumbnail",
+    "description": "Size of the thumbnail image for the notification."
+  },
+
+  "notification_size_mini": {
+    "message": "the mini image",
+    "description": "Size of the mini image for the notification."
+  },
+
+  "notification_host_rehost": {
+    "message": "reho.st",
+    "description": "Name of the host reho.st for the notification."
+  },
+
+  "notification_host_diberie": {
+    "message": "diberie.com",
+    "description": "Name of the host diberie.com for the notification."
+  },
+
+  "notification_host_wsrvnl": {
+    "message": "wsrv.nl",
+    "description": "Name of the host wsrv.nl for the notification."
+  },
+
+  "notification_message_naked_link": {
+    "message": "The link of $image$ rehosted on $host$\nhas been pasted to the clipboard.",
+    "description": "Message for the notification saying which kind of rehosting has been pasted to the clipboard.",
+    "placeholders": {
+      "image": {
+        "content": "$1",
+        "example": "the large image"
+      },
+      "host": {
+        "content": "$2",
+        "example": "reho.st"
+      }
+    }
+  },
+
+  "notification_message_naked_link_without_rehost": {
+    "message": "The link of the image without rehosting\nhas been pasted to the clipboard.",
+    "description": "Message for the notification saying which kind of rehosting has been pasted to the clipboard."
+  },
+
+  "notification_message_bbcode_without_link": {
+    "message": "The BBCode without link of $image$ rehosted on $host$\nhas been pasted to the clipboard.",
+    "description": "Message for the notification saying which kind of rehosting has been pasted to the clipboard.",
+    "placeholders": {
+      "image": {
+        "content": "$1",
+        "example": "the large image"
+      },
+      "host": {
+        "content": "$2",
+        "example": "reho.st"
+      }
+    }
+  },
+
+  "notification_message_bbcode_without_link_without_rehost": {
+    "message": "The BBCode without link of the image without rehosting\nhas been pasted to the clipboard.",
+    "description": "Message for the notification saying which kind of rehosting has been pasted to the clipboard."
+  },
+
+  "notification_message_bbcode": {
+    "message": "The BBCode of $image$ rehosted on $host$\nhas been pasted to the clipboard.",
+    "description": "Message for the notification saying which kind of rehosting has been pasted to the clipboard.",
+    "placeholders": {
+      "image": {
+        "content": "$1",
+        "example": "the large image"
+      },
+      "host": {
+        "content": "$2",
+        "example": "reho.st"
+      }
+    }
+  },
+
+  "notification_message_bbcode_without_rehost": {
+    "message": "The BBCode of the image without rehosting\nhas been pasted to the clipboard.",
+    "description": "Message for the notification saying which kind of rehosting has been pasted to the clipboard."
   }
 
 }

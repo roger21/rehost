@@ -168,6 +168,116 @@
   "popup_label_break": {
     "message": "Ajouter un retour",
     "description": "Label for the option add a break in the popup."
+  },
+
+  "notification_size_original": {
+    "message": "l'image",
+    "description": "Size of the original image for the notification."
+  },
+
+  "notification_size_large": {
+    "message": "l'image large",
+    "description": "Size of the large image for the notification."
+  },
+
+  "notification_size_grand": {
+    "message": "l'image grande",
+    "description": "Size of the grand image for the notification."
+  },
+
+  "notification_size_medium": {
+    "message": "l'image moyenne",
+    "description": "Size of the medium image for the notification."
+  },
+
+  "notification_size_preview": {
+    "message": "l'aperçu",
+    "description": "Size of the preview image for the notification."
+  },
+
+  "notification_size_thumbnail": {
+    "message": "la vignette",
+    "description": "Size of the thumbnail image for the notification."
+  },
+
+  "notification_size_mini": {
+    "message": "l'image mini",
+    "description": "Size of the mini image for the notification."
+  },
+
+  "notification_host_rehost": {
+    "message": "reho.st",
+    "description": "Name of the host reho.st for the notification."
+  },
+
+  "notification_host_diberie": {
+    "message": "diberie.com",
+    "description": "Name of the host diberie.com for the notification."
+  },
+
+  "notification_host_wsrvnl": {
+    "message": "wsrv.nl",
+    "description": "Name of the host wsrv.nl for the notification."
+  },
+
+  "notification_message_naked_link": {
+    "message": "Le lien de $image$ réhébergée sur $host$\na été copié dans le presse-papiers.",
+    "description": "Message for the notification saying which kind of rehosting has been pasted to the clipboard.",
+    "placeholders": {
+      "image": {
+        "content": "$1",
+        "example": "the large image"
+      },
+      "host": {
+        "content": "$2",
+        "example": "reho.st"
+      }
+    }
+  },
+
+  "notification_message_naked_link_without_rehost": {
+    "message": "Le lien de l'image sans réhébergement\na été copié dans le presse-papiers.",
+    "description": "Message for the notification saying which kind of rehosting has been pasted to the clipboard."
+  },
+
+  "notification_message_bbcode_without_link": {
+    "message": "Le BBCode sans lien de $image$ réhébergée sur $host$\na été copié dans le presse-papiers.",
+    "description": "Message for the notification saying which kind of rehosting has been pasted to the clipboard.",
+    "placeholders": {
+      "image": {
+        "content": "$1",
+        "example": "the large image"
+      },
+      "host": {
+        "content": "$2",
+        "example": "reho.st"
+      }
+    }
+  },
+
+  "notification_message_bbcode_without_link_without_rehost": {
+    "message": "Le BBCode sans lien de l'image sans réhébergement\na été copié dans le presse-papiers.",
+    "description": "Message for the notification saying which kind of rehosting has been pasted to the clipboard."
+  },
+
+  "notification_message_bbcode": {
+    "message": "Le BBCode de $image$ réhébergée sur $host$\na été copié dans le presse-papiers.",
+    "description": "Message for the notification saying which kind of rehosting has been pasted to the clipboard.",
+    "placeholders": {
+      "image": {
+        "content": "$1",
+        "example": "the large image"
+      },
+      "host": {
+        "content": "$2",
+        "example": "reho.st"
+      }
+    }
+  },
+
+  "notification_message_bbcode_without_rehost": {
+    "message": "Le BBCode de l'image sans réhébergement\na été copié dans le presse-papiers.",
+    "description": "Message for the notification saying which kind of rehosting has been pasted to the clipboard."
   }
 
 }
