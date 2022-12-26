@@ -1,5 +1,5 @@
 const default_options = {
-  "host": "rehost", // "rehost", "diberie", "wsrvnl"
+  "host": "rehost", // "rehost", "diberie", "wsrvnl", "superhfr"
   "history": true, // TODO false,
   "temporary": true, // TODO false,
   "notifications": true,
@@ -27,7 +27,13 @@ const default_options = {
   "wsrvnl_medium": true,
   "wsrvnl_preview": true,
   "wsrvnl_thumbnail": true,
-  "wsrvnl_mini": true
+  "wsrvnl_mini": true,
+  "superhfr_large": true,
+  "superhfr_grand": true,
+  "superhfr_medium": true,
+  "superhfr_preview": true,
+  "superhfr_thumbnail": true,
+  "superhfr_mini": true
 };
 
 const g_params = {
@@ -70,6 +76,21 @@ const g_params = {
     "thumbnail": "&w=230&h=230&we",
     "mini": "&w=150&h=150&we",
     "image": "&url="
+  },
+  "superhfr": {
+    "base": "http://rehost.super-h.fr/",
+    "encode": false,
+    "link": {
+      "image": ""
+    },
+    "original": "",
+    "large": "1200x/",
+    "grand": "1000x/",
+    "medium": "800x/",
+    "preview": "600x/",
+    "thumbnail": "230,fit/",
+    "mini": "150,fit/",
+    "image": ""
   }
 }
 

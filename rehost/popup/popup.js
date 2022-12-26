@@ -21,6 +21,8 @@ function update_popup() {
     .classList.toggle("checked", g_options["host"] === "diberie");
   document.querySelector("p#popup_host_wsrvnl > span")
     .classList.toggle("checked", g_options["host"] === "wsrvnl");
+  document.querySelector("p#popup_host_superhfr > span")
+    .classList.toggle("checked", g_options["host"] === "superhfr");
   document.querySelector("p#popup_notifications > span")
     .classList.toggle("checked", g_options["notifications"] === true);
   document.querySelector("p#popup_link_image > span")

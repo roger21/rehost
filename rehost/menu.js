@@ -245,6 +245,23 @@ const default_menu = [{
 
 }, {
 
+  // host superhfr
+  "contexts": ["image"],
+  "enabled": false,
+  "icons": {
+    "16": "images/controls/radio_light.png"
+  },
+  "id": "submenu_item_host_superhfr",
+  "onclick": do_update,
+  "parentId": hosts_sub_menu_id,
+  "targetUrlPatterns": ["*://*/*"],
+  "title": browser.i18n.getMessage("menu_item_host_superhfr"),
+  "type": "normal",
+  "viewTypes": ["tab"],
+  "visible": false
+
+}, {
+
   // host rehost
   "contexts": ["image"],
   "enabled": true,
@@ -290,6 +307,23 @@ const default_menu = [{
   "parentId": rehost_main_menu_id,
   "targetUrlPatterns": ["*://*/*"],
   "title": browser.i18n.getMessage("menu_item_host_wsrvnl"),
+  "type": "normal",
+  "viewTypes": ["tab"],
+  "visible": true
+
+}, {
+
+  // host superhfr
+  "contexts": ["image"],
+  "enabled": true,
+  "icons": {
+    "16": "images/controls/radio_light.png"
+  },
+  "id": "menu_item_host_superhfr",
+  "onclick": do_update,
+  "parentId": rehost_main_menu_id,
+  "targetUrlPatterns": ["*://*/*"],
+  "title": browser.i18n.getMessage("menu_item_host_superhfr"),
   "type": "normal",
   "viewTypes": ["tab"],
   "visible": true
@@ -575,7 +609,8 @@ function update_menu() {
     "visible": true
   }));
   // rehost large
-  if(g_options["host"] === "wsrvnl" && g_options["wsrvnl_large"] === true) {
+  if((g_options["host"] === "wsrvnl" && g_options["wsrvnl_large"] === true) ||
+     (g_options["host"] === "superhfr" && g_options["superhfr_large"] === true)) {
     l_promises.push(browser.menus.update("menu_item_large", {
       "enabled": true,
       "visible": true
@@ -587,7 +622,8 @@ function update_menu() {
     }));
   }
   // rehost grand
-  if(g_options["host"] === "wsrvnl" && g_options["wsrvnl_grand"] === true) {
+  if((g_options["host"] === "wsrvnl" && g_options["wsrvnl_grand"] === true) ||
+    (g_options["host"] === "superhfr" && g_options["superhfr_grand"] === true)) {
     l_promises.push(browser.menus.update("menu_item_grand", {
       "enabled": true,
       "visible": true
@@ -601,7 +637,8 @@ function update_menu() {
   // rehost medium
   if((g_options["host"] === "rehost" && g_options["rehost_medium"] === true) ||
     (g_options["host"] === "diberie" && g_options["diberie_medium"] === true) ||
-    (g_options["host"] === "wsrvnl" && g_options["wsrvnl_medium"] === true)) {
+    (g_options["host"] === "wsrvnl" && g_options["wsrvnl_medium"] === true) ||
+    (g_options["host"] === "superhfr" && g_options["superhfr_medium"] === true)) {
     l_promises.push(browser.menus.update("menu_item_medium", {
       "enabled": true,
       "visible": true
@@ -614,7 +651,8 @@ function update_menu() {
   }
   // rehost preview
   if((g_options["host"] === "rehost" && g_options["rehost_preview"] === true) ||
-    (g_options["host"] === "wsrvnl" && g_options["wsrvnl_preview"] === true)) {
+    (g_options["host"] === "wsrvnl" && g_options["wsrvnl_preview"] === true) ||
+    (g_options["host"] === "superhfr" && g_options["superhfr_preview"] === true)) {
     l_promises.push(browser.menus.update("menu_item_preview", {
       "enabled": true,
       "visible": true
@@ -627,7 +665,8 @@ function update_menu() {
   }
   // rehost thumbnail
   if((g_options["host"] === "rehost" && g_options["rehost_thumbnail"] === true) ||
-    (g_options["host"] === "wsrvnl" && g_options["wsrvnl_thumbnail"] === true)) {
+    (g_options["host"] === "wsrvnl" && g_options["wsrvnl_thumbnail"] === true) ||
+    (g_options["host"] === "superhfr" && g_options["superhfr_thumbnail"] === true)) {
     l_promises.push(browser.menus.update("menu_item_thumbnail", {
       "enabled": true,
       "visible": true
@@ -640,7 +679,8 @@ function update_menu() {
   }
   // rehost mini
   if((g_options["host"] === "diberie" && g_options["diberie_mini"] === true) ||
-    (g_options["host"] === "wsrvnl" && g_options["wsrvnl_mini"] === true)) {
+    (g_options["host"] === "wsrvnl" && g_options["wsrvnl_mini"] === true) ||
+    (g_options["host"] === "superhfr" && g_options["superhfr_mini"] === true)) {
     l_promises.push(browser.menus.update("menu_item_mini", {
       "enabled": true,
       "visible": true
@@ -656,6 +696,7 @@ function update_menu() {
   // host rehost
   // host diberie
   // host wsrvnl
+  // host superhfr
   if(g_options["menu_host"] !== false) {
     l_promises.push(browser.menus.update("menu_item_separator_1", {
       "enabled": true,
@@ -682,6 +723,10 @@ function update_menu() {
       "enabled": false,
       "visible": false
     }));
+    l_promises.push(browser.menus.update("submenu_item_host_superhfr", {
+      "enabled": false,
+      "visible": false
+    }));
     l_promises.push(browser.menus.update("menu_item_host_rehost", {
       "enabled": false,
       "visible": false
@@ -691,6 +736,10 @@ function update_menu() {
       "visible": false
     }));
     l_promises.push(browser.menus.update("menu_item_host_wsrvnl", {
+      "enabled": false,
+      "visible": false
+    }));
+    l_promises.push(browser.menus.update("menu_item_host_superhfr", {
       "enabled": false,
       "visible": false
     }));
@@ -712,6 +761,10 @@ function update_menu() {
       "enabled": true,
       "visible": true
     }));
+    l_promises.push(browser.menus.update("submenu_item_host_superhfr", {
+      "enabled": true,
+      "visible": true
+    }));
     l_promises.push(browser.menus.update("menu_item_host_rehost", {
       "enabled": false,
       "visible": false
@@ -721,6 +774,10 @@ function update_menu() {
       "visible": false
     }));
     l_promises.push(browser.menus.update("menu_item_host_wsrvnl", {
+      "enabled": false,
+      "visible": false
+    }));
+    l_promises.push(browser.menus.update("menu_item_host_superhfr", {
       "enabled": false,
       "visible": false
     }));
@@ -742,6 +799,10 @@ function update_menu() {
       "enabled": false,
       "visible": false
     }));
+    l_promises.push(browser.menus.update("submenu_item_host_superhfr", {
+      "enabled": false,
+      "visible": false
+    }));
     l_promises.push(browser.menus.update("menu_item_host_rehost", {
       "enabled": true,
       "visible": true
@@ -751,6 +812,10 @@ function update_menu() {
       "visible": true
     }));
     l_promises.push(browser.menus.update("menu_item_host_wsrvnl", {
+      "enabled": true,
+      "visible": true
+    }));
+    l_promises.push(browser.menus.update("menu_item_host_superhfr", {
       "enabled": true,
       "visible": true
     }));
@@ -1080,6 +1145,12 @@ function refresh_menu(p_gif = false) {
         l_dark + ".svg"
     }
   }));
+  l_promises.push(browser.menus.update("submenu_item_host_superhfr", {
+    "icons": {
+      "16": "images/controls/radio" + checked(g_options["host"] === "superhfr") +
+        l_dark + ".svg"
+    }
+  }));
   l_promises.push(browser.menus.update("menu_item_host_rehost", {
     "icons": {
       "16": "images/controls/radio" + checked(g_options["host"] === "rehost") +
@@ -1095,6 +1166,12 @@ function refresh_menu(p_gif = false) {
   l_promises.push(browser.menus.update("menu_item_host_wsrvnl", {
     "icons": {
       "16": "images/controls/radio" + checked(g_options["host"] === "wsrvnl") +
+        l_dark + ".svg"
+    }
+  }));
+  l_promises.push(browser.menus.update("menu_item_host_superhfr", {
+    "icons": {
+      "16": "images/controls/radio" + checked(g_options["host"] === "superhfr") +
         l_dark + ".svg"
     }
   }));
