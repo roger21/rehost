@@ -160,7 +160,7 @@ window.addEventListener("load", function() {
     // actions on click
     let l_ps = document.querySelectorAll("body > p");
     for(const l_p of l_ps) {
-      if(l_p.style.display !== "none";) {
+      if(l_p.style.display !== "none") {
         l_p.addEventListener("click", click_action, false);
       }
     }
