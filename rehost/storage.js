@@ -1,5 +1,7 @@
 const default_options = {
-  "host": "rehost", // "rehost", "diberie", "wsrvnl", "superhfr"
+  "host": "rehost", // "rehost", "diberie", "wsrvnl", "superhfr", "auraiteu"
+  "configuration_todo": false, // TODO
+  "histories_todo": false, // TODO
   "history": true, // TODO false,
   "temporary": true, // TODO false,
   "notifications": true,
@@ -11,7 +13,7 @@ const default_options = {
   "menu_history": true,
   "menu_temporary": true,
   "menu_options": true, // false, true, "sub"
-  "popup_action": "configuration", // "popup", "configuration", "history", "temporary"
+  "popup_action": "popup", // "popup", "configuration", "history", "temporary"
   "popup_hosts": true,
   "popup_configuration": true,
   "popup_history": true,
@@ -33,7 +35,13 @@ const default_options = {
   "superhfr_medium": true,
   "superhfr_preview": true,
   "superhfr_thumbnail": true,
-  "superhfr_mini": true
+  "superhfr_mini": true,
+  "auraiteu_large": true,
+  "auraiteu_grand": true,
+  "auraiteu_medium": true,
+  "auraiteu_preview": true,
+  "auraiteu_thumbnail": true,
+  "auraiteu_mini": true
 };
 
 const g_params = {
@@ -91,6 +99,21 @@ const g_params = {
     "thumbnail": "230,fit/",
     "mini": "150,fit/",
     "image": ""
+  },
+  "auraiteu": {
+    "base": "https://hfr-rehost.aurait.eu/",
+    "encode": false,
+    "link": {
+      "image": ""
+    },
+    "original": "",
+    "large": "1200x/",
+    "grand": "1000x/",
+    "medium": "800x/",
+    "preview": "600x/",
+    "thumbnail": "230,fit/",
+    "mini": "150,fit/",
+    "image": ""
   }
 }
 
@@ -117,6 +140,7 @@ function init_options(p_do_something) {
 
     // correction des paramètres qui auraient une ancienne valeur obsolète
     // en cas de mise à jour des valeurs possibles dans default_options
+    // les paramètres ajoutés ou supprimés sont déjà gérés
 
     debug_message("storage.js",
       "init_options browser.storage.local.get g_options",
@@ -167,58 +191,60 @@ function update_options(p_1, p_2) {
 }
 
 function open_histories(p_kind) {
-  let l_histories_url = browser.runtime.getURL("/histories/" + p_kind + ".html");
-  browser.tabs.query({
-    "url": l_histories_url
-  }).then(function(p_tabs) {
-    debug_message("storage.js",
-      "open_histories browser.tabs.query " + p_kind,
-      p_tabs);
-    let l_found = false;
-    for(const l_tab of p_tabs) {
-      l_found = true;
-      browser.tabs.update(l_tab["id"], {
-        "active": true
-      }).then(function(p_tab) {
-        debug_message("storage.js",
-          "open_histories browser.tabs.update " + p_kind,
-          p_tab);
-        browser.windows.update(l_tab["windowId"], {
-          "focused": true
-        }).then(function(p_windows) {
+  if(g_options["histories_todo"]) {
+    let l_histories_url = browser.runtime.getURL("/histories/" + p_kind + ".html");
+    browser.tabs.query({
+      "url": l_histories_url
+    }).then(function(p_tabs) {
+      debug_message("storage.js",
+        "open_histories browser.tabs.query " + p_kind,
+        p_tabs);
+      let l_found = false;
+      for(const l_tab of p_tabs) {
+        l_found = true;
+        browser.tabs.update(l_tab["id"], {
+          "active": true
+        }).then(function(p_tab) {
           debug_message("storage.js",
-            "open_histories browser.windows.update " + p_kind,
-            p_windows);
+            "open_histories browser.tabs.update " + p_kind,
+            p_tab);
+          browser.windows.update(l_tab["windowId"], {
+            "focused": true
+          }).then(function(p_windows) {
+            debug_message("storage.js",
+              "open_histories browser.windows.update " + p_kind,
+              p_windows);
+          }).catch(function(p_error) {
+            error_message("storage.js",
+              "open_histories browser.windows.update " + p_kind,
+              p_error);
+          });
         }).catch(function(p_error) {
           error_message("storage.js",
-            "open_histories browser.windows.update " + p_kind,
+            "open_histories browser.tabs.update " + p_kind,
             p_error);
         });
-      }).catch(function(p_error) {
-        error_message("storage.js",
-          "open_histories browser.tabs.update " + p_kind,
-          p_error);
-      });
-      break;
-    }
-    if(!l_found) {
-      browser.tabs.create({
-        url: "/histories/" + p_kind + ".html"
-      }).then(function(p_tab) {
-        debug_message("storage.js",
-          "open_histories browser.tabs.create " + p_kind,
-          p_tab);
-      }).catch(function(p_error) {
-        error_message("storage.js",
-          "open_histories browser.tabs.create " + p_kind,
-          p_error);
-      });
-    }
-  }).catch(function(p_error) {
-    error_message("storage.js",
-      "open_histories browser.tabs.query " + p_kind,
-      p_error);
-  });
+        break;
+      }
+      if(!l_found) {
+        browser.tabs.create({
+          url: "/histories/" + p_kind + ".html"
+        }).then(function(p_tab) {
+          debug_message("storage.js",
+            "open_histories browser.tabs.create " + p_kind,
+            p_tab);
+        }).catch(function(p_error) {
+          error_message("storage.js",
+            "open_histories browser.tabs.create " + p_kind,
+            p_error);
+        });
+      }
+    }).catch(function(p_error) {
+      error_message("storage.js",
+        "open_histories browser.tabs.query " + p_kind,
+        p_error);
+    });
+  }
 }
 
 function message_handler(p_message, p_sender, p_send_response) {

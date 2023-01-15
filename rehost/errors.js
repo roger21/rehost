@@ -1,4 +1,4 @@
-const g_debug = true;
+const g_debug = true; // TODO
 
 function error_message(p_file, p_action, p_error) {
   console.log("ERROR extension " + browser.i18n.getMessage("extension_name") +

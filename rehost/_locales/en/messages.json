@@ -80,6 +80,11 @@
     "description": "Title of the menu item super-h.fr."
   },
 
+  "menu_item_host_auraiteu": {
+    "message": "aurait.eu",
+    "description": "Title of the menu item aurait.eu."
+  },
+
   "menu_item_configuration": {
     "message": "Configuration",
     "description": "Title of the menu item configuration."
@@ -143,6 +148,11 @@
   "popup_label_host_superhfr": {
     "message": "super-h.fr",
     "description": "Label for the host super-h.fr in the popup."
+  },
+
+  "popup_label_host_auraiteu": {
+    "message": "aurait.eu",
+    "description": "Label for the host aurait.eu in the popup."
   },
 
   "popup_label_configuration": {
@@ -233,6 +243,11 @@
   "notification_host_superhfr": {
     "message": "super-h.fr",
     "description": "Name of the host super-h.fr for the notification."
+  },
+
+  "notification_host_auraiteu": {
+    "message": "aurait.eu",
+    "description": "Name of the host aurait.eu for the notification."
   },
 
   "notification_message_naked_link": {

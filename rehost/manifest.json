@@ -8,7 +8,7 @@
 
   "homepage_url": "https://github.com/roger21/rehost",
 
-  "version": "0.0.1",
+  "version": "0.8.0",
 
   "default_locale": "en",
 
@@ -34,7 +34,7 @@
     "scripts": ["errors.js", "storage.js", "menu.js"]
   },
 
-  "options_ui": {
+  "options_ui_TODO": {
     "page": "options/options.html",
     "browser_style": false
   },

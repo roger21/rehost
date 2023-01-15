@@ -194,17 +194,17 @@ const default_menu = [{
 
 }, {
 
-  // host rehost
+  // host auraiteu
   "contexts": ["image"],
   "enabled": false,
   "icons": {
-    "16": "images/controls/radio_checked_light.png"
+    "16": "images/controls/radio_light.png"
   },
-  "id": "submenu_item_host_rehost",
+  "id": "submenu_item_host_auraiteu",
   "onclick": do_update,
   "parentId": hosts_sub_menu_id,
   "targetUrlPatterns": ["*://*/*"],
-  "title": browser.i18n.getMessage("menu_item_host_rehost"),
+  "title": browser.i18n.getMessage("menu_item_host_auraiteu"),
   "type": "normal",
   "viewTypes": ["tab"],
   "visible": false
@@ -228,17 +228,17 @@ const default_menu = [{
 
 }, {
 
-  // host wsrvnl
+  // host rehost
   "contexts": ["image"],
   "enabled": false,
   "icons": {
-    "16": "images/controls/radio_light.png"
+    "16": "images/controls/radio_checked_light.png"
   },
-  "id": "submenu_item_host_wsrvnl",
+  "id": "submenu_item_host_rehost",
   "onclick": do_update,
   "parentId": hosts_sub_menu_id,
   "targetUrlPatterns": ["*://*/*"],
-  "title": browser.i18n.getMessage("menu_item_host_wsrvnl"),
+  "title": browser.i18n.getMessage("menu_item_host_rehost"),
   "type": "normal",
   "viewTypes": ["tab"],
   "visible": false
@@ -262,17 +262,34 @@ const default_menu = [{
 
 }, {
 
-  // host rehost
+  // host wsrvnl
+  "contexts": ["image"],
+  "enabled": false,
+  "icons": {
+    "16": "images/controls/radio_light.png"
+  },
+  "id": "submenu_item_host_wsrvnl",
+  "onclick": do_update,
+  "parentId": hosts_sub_menu_id,
+  "targetUrlPatterns": ["*://*/*"],
+  "title": browser.i18n.getMessage("menu_item_host_wsrvnl"),
+  "type": "normal",
+  "viewTypes": ["tab"],
+  "visible": false
+
+}, {
+
+  // host auraiteu
   "contexts": ["image"],
   "enabled": true,
   "icons": {
-    "16": "images/controls/radio_checked_light.png"
+    "16": "images/controls/radio_light.png"
   },
-  "id": "menu_item_host_rehost",
+  "id": "menu_item_host_auraiteu",
   "onclick": do_update,
   "parentId": rehost_main_menu_id,
   "targetUrlPatterns": ["*://*/*"],
-  "title": browser.i18n.getMessage("menu_item_host_rehost"),
+  "title": browser.i18n.getMessage("menu_item_host_auraiteu"),
   "type": "normal",
   "viewTypes": ["tab"],
   "visible": true
@@ -296,17 +313,17 @@ const default_menu = [{
 
 }, {
 
-  // host wsrvnl
+  // host rehost
   "contexts": ["image"],
   "enabled": true,
   "icons": {
-    "16": "images/controls/radio_light.png"
+    "16": "images/controls/radio_checked_light.png"
   },
-  "id": "menu_item_host_wsrvnl",
+  "id": "menu_item_host_rehost",
   "onclick": do_update,
   "parentId": rehost_main_menu_id,
   "targetUrlPatterns": ["*://*/*"],
-  "title": browser.i18n.getMessage("menu_item_host_wsrvnl"),
+  "title": browser.i18n.getMessage("menu_item_host_rehost"),
   "type": "normal",
   "viewTypes": ["tab"],
   "visible": true
@@ -324,6 +341,23 @@ const default_menu = [{
   "parentId": rehost_main_menu_id,
   "targetUrlPatterns": ["*://*/*"],
   "title": browser.i18n.getMessage("menu_item_host_superhfr"),
+  "type": "normal",
+  "viewTypes": ["tab"],
+  "visible": true
+
+}, {
+
+  // host wsrvnl
+  "contexts": ["image"],
+  "enabled": true,
+  "icons": {
+    "16": "images/controls/radio_light.png"
+  },
+  "id": "menu_item_host_wsrvnl",
+  "onclick": do_update,
+  "parentId": rehost_main_menu_id,
+  "targetUrlPatterns": ["*://*/*"],
+  "title": browser.i18n.getMessage("menu_item_host_wsrvnl"),
   "type": "normal",
   "viewTypes": ["tab"],
   "visible": true
@@ -610,7 +644,8 @@ function update_menu() {
   }));
   // rehost large
   if((g_options["host"] === "wsrvnl" && g_options["wsrvnl_large"] === true) ||
-     (g_options["host"] === "superhfr" && g_options["superhfr_large"] === true)) {
+    (g_options["host"] === "superhfr" && g_options["superhfr_large"] === true) ||
+    (g_options["host"] === "auraiteu" && g_options["auraiteu_large"] === true)) {
     l_promises.push(browser.menus.update("menu_item_large", {
       "enabled": true,
       "visible": true
@@ -623,7 +658,8 @@ function update_menu() {
   }
   // rehost grand
   if((g_options["host"] === "wsrvnl" && g_options["wsrvnl_grand"] === true) ||
-    (g_options["host"] === "superhfr" && g_options["superhfr_grand"] === true)) {
+    (g_options["host"] === "superhfr" && g_options["superhfr_grand"] === true) ||
+    (g_options["host"] === "auraiteu" && g_options["auraiteu_grand"] === true)) {
     l_promises.push(browser.menus.update("menu_item_grand", {
       "enabled": true,
       "visible": true
@@ -638,7 +674,8 @@ function update_menu() {
   if((g_options["host"] === "rehost" && g_options["rehost_medium"] === true) ||
     (g_options["host"] === "diberie" && g_options["diberie_medium"] === true) ||
     (g_options["host"] === "wsrvnl" && g_options["wsrvnl_medium"] === true) ||
-    (g_options["host"] === "superhfr" && g_options["superhfr_medium"] === true)) {
+    (g_options["host"] === "superhfr" && g_options["superhfr_medium"] === true) ||
+    (g_options["host"] === "auraiteu" && g_options["auraiteu_medium"] === true)) {
     l_promises.push(browser.menus.update("menu_item_medium", {
       "enabled": true,
       "visible": true
@@ -652,7 +689,8 @@ function update_menu() {
   // rehost preview
   if((g_options["host"] === "rehost" && g_options["rehost_preview"] === true) ||
     (g_options["host"] === "wsrvnl" && g_options["wsrvnl_preview"] === true) ||
-    (g_options["host"] === "superhfr" && g_options["superhfr_preview"] === true)) {
+    (g_options["host"] === "superhfr" && g_options["superhfr_preview"] === true) ||
+    (g_options["host"] === "auraiteu" && g_options["auraiteu_preview"] === true)) {
     l_promises.push(browser.menus.update("menu_item_preview", {
       "enabled": true,
       "visible": true
@@ -666,7 +704,8 @@ function update_menu() {
   // rehost thumbnail
   if((g_options["host"] === "rehost" && g_options["rehost_thumbnail"] === true) ||
     (g_options["host"] === "wsrvnl" && g_options["wsrvnl_thumbnail"] === true) ||
-    (g_options["host"] === "superhfr" && g_options["superhfr_thumbnail"] === true)) {
+    (g_options["host"] === "superhfr" && g_options["superhfr_thumbnail"] === true) ||
+    (g_options["host"] === "auraiteu" && g_options["auraiteu_thumbnail"] === true)) {
     l_promises.push(browser.menus.update("menu_item_thumbnail", {
       "enabled": true,
       "visible": true
@@ -680,7 +719,8 @@ function update_menu() {
   // rehost mini
   if((g_options["host"] === "diberie" && g_options["diberie_mini"] === true) ||
     (g_options["host"] === "wsrvnl" && g_options["wsrvnl_mini"] === true) ||
-    (g_options["host"] === "superhfr" && g_options["superhfr_mini"] === true)) {
+    (g_options["host"] === "superhfr" && g_options["superhfr_mini"] === true) ||
+    (g_options["host"] === "auraiteu" && g_options["auraiteu_mini"] === true)) {
     l_promises.push(browser.menus.update("menu_item_mini", {
       "enabled": true,
       "visible": true
@@ -697,6 +737,7 @@ function update_menu() {
   // host diberie
   // host wsrvnl
   // host superhfr
+  // host auraiteu
   if(g_options["menu_host"] !== false) {
     l_promises.push(browser.menus.update("menu_item_separator_1", {
       "enabled": true,
@@ -727,6 +768,10 @@ function update_menu() {
       "enabled": false,
       "visible": false
     }));
+    l_promises.push(browser.menus.update("submenu_item_host_auraiteu", {
+      "enabled": false,
+      "visible": false
+    }));
     l_promises.push(browser.menus.update("menu_item_host_rehost", {
       "enabled": false,
       "visible": false
@@ -740,6 +785,10 @@ function update_menu() {
       "visible": false
     }));
     l_promises.push(browser.menus.update("menu_item_host_superhfr", {
+      "enabled": false,
+      "visible": false
+    }));
+    l_promises.push(browser.menus.update("menu_item_host_auraiteu", {
       "enabled": false,
       "visible": false
     }));
@@ -765,6 +814,10 @@ function update_menu() {
       "enabled": true,
       "visible": true
     }));
+    l_promises.push(browser.menus.update("submenu_item_host_auraiteu", {
+      "enabled": true,
+      "visible": true
+    }));
     l_promises.push(browser.menus.update("menu_item_host_rehost", {
       "enabled": false,
       "visible": false
@@ -778,6 +831,10 @@ function update_menu() {
       "visible": false
     }));
     l_promises.push(browser.menus.update("menu_item_host_superhfr", {
+      "enabled": false,
+      "visible": false
+    }));
+    l_promises.push(browser.menus.update("menu_item_host_auraiteu", {
       "enabled": false,
       "visible": false
     }));
@@ -803,6 +860,10 @@ function update_menu() {
       "enabled": false,
       "visible": false
     }));
+    l_promises.push(browser.menus.update("submenu_item_host_auraiteu", {
+      "enabled": false,
+      "visible": false
+    }));
     l_promises.push(browser.menus.update("menu_item_host_rehost", {
       "enabled": true,
       "visible": true
@@ -819,10 +880,14 @@ function update_menu() {
       "enabled": true,
       "visible": true
     }));
+    l_promises.push(browser.menus.update("menu_item_host_auraiteu", {
+      "enabled": true,
+      "visible": true
+    }));
   }
   // separator 2 hosts / configuration
   // configuration
-  if(g_options["menu_configuration"] === true) {
+  if(g_options["menu_configuration"] === true && g_options["configuration_todo"]) { // TODO
     l_promises.push(browser.menus.update("menu_item_separator_2", {
       "enabled": true,
       "visible": true
@@ -843,7 +908,8 @@ function update_menu() {
   }
   // separator 3 configuration / histories
   if((g_options["history"] === true || g_options["temporary"] === true) &&
-    (g_options["menu_history"] === true || g_options["menu_temporary"] === true)) {
+    (g_options["menu_history"] === true || g_options["menu_temporary"] === true) &&
+    g_options["histories_todo"]) { // TODO
     l_promises.push(browser.menus.update("menu_item_separator_3", {
       "enabled": true,
       "visible": true
@@ -855,7 +921,8 @@ function update_menu() {
     }));
   }
   // history
-  if(g_options["history"] === true && g_options["menu_history"] === true) {
+  if(g_options["history"] === true && g_options["menu_history"] === true &&
+    g_options["histories_todo"]) { // TODO
     l_promises.push(browser.menus.update("menu_item_history", {
       "enabled": true,
       "visible": true
@@ -867,7 +934,8 @@ function update_menu() {
     }));
   }
   // temporary history
-  if(g_options["temporary"] === true && g_options["menu_temporary"] === true) {
+  if(g_options["temporary"] === true && g_options["menu_temporary"] === true &&
+    g_options["histories_todo"]) { // TODO
     l_promises.push(browser.menus.update("menu_item_temporary", {
       "enabled": true,
       "visible": true
@@ -1010,8 +1078,8 @@ function update_menu() {
   // option link image
   // option link page
   // disable them if not host TODO or host TODO ...
-  //if(g_options["host"] !== "TODO" && g_options["host"] !== "TODO") {
-  if(false) { // TODO
+  if(g_options["host"] !== "TODO" && g_options["host"] !== "TODO") {
+    //if(false) { // TODO
     l_promises.push(browser.menus.update("submenu_item_link_image", {
       "enabled": false,
       "visible": false
@@ -1151,6 +1219,12 @@ function refresh_menu(p_gif = false) {
         l_dark + ".svg"
     }
   }));
+  l_promises.push(browser.menus.update("submenu_item_host_auraiteu", {
+    "icons": {
+      "16": "images/controls/radio" + checked(g_options["host"] === "auraiteu") +
+        l_dark + ".svg"
+    }
+  }));
   l_promises.push(browser.menus.update("menu_item_host_rehost", {
     "icons": {
       "16": "images/controls/radio" + checked(g_options["host"] === "rehost") +
@@ -1172,6 +1246,12 @@ function refresh_menu(p_gif = false) {
   l_promises.push(browser.menus.update("menu_item_host_superhfr", {
     "icons": {
       "16": "images/controls/radio" + checked(g_options["host"] === "superhfr") +
+        l_dark + ".svg"
+    }
+  }));
+  l_promises.push(browser.menus.update("menu_item_host_auraiteu", {
+    "icons": {
+      "16": "images/controls/radio" + checked(g_options["host"] === "auraiteu") +
         l_dark + ".svg"
     }
   }));
@@ -1324,7 +1404,7 @@ function do_rehost(p_item) {
   }
 }
 
-/* buggy as fuck on linux xfce debian bullseye
+/* buggy as fuck on linux xfce debian bullseye TODO
 browser.notifications.onClicked.addListener(function(p_id){
   debug_message("menu.js",
     "browser.notifications.onClicked",
