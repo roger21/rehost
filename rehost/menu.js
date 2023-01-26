@@ -738,7 +738,7 @@ function update_menu() {
   // host wsrvnl
   // host superhfr
   // host auraiteu
-  if(g_options["menu_host"] !== false) {
+  if(g_options["menu_hosts"] !== false) {
     l_promises.push(browser.menus.update("menu_item_separator_1", {
       "enabled": true,
       "visible": true
@@ -793,7 +793,8 @@ function update_menu() {
       "visible": false
     }));
   }
-  if(g_options["menu_hosts"] === "sub") {
+  if(g_options["menu_hosts"] === "sub" ||
+    (g_options["menu_hosts"] === true && g_options["menu_submenus"] === true)) { // TODO
     l_promises.push(browser.menus.update(hosts_sub_menu_id, {
       "enabled": true,
       "visible": true
@@ -839,7 +840,7 @@ function update_menu() {
       "visible": false
     }));
   }
-  if(g_options["menu_hosts"] === true) {
+  if(g_options["menu_hosts"] === true && g_options["menu_submenus"] === false) { // TODO
     l_promises.push(browser.menus.update(hosts_sub_menu_id, {
       "enabled": false,
       "visible": false
@@ -999,7 +1000,8 @@ function update_menu() {
       "visible": false
     }));
   }
-  if(g_options["menu_options"] === "sub") {
+  if(g_options["menu_options"] === "sub" ||
+    (g_options["menu_options"] === true && g_options["menu_submenus"] === true)) { // TODO
     l_promises.push(browser.menus.update(options_sub_menu_id, {
       "enabled": true,
       "visible": true
@@ -1037,7 +1039,7 @@ function update_menu() {
       "visible": false
     }));
   }
-  if(g_options["menu_options"] === true) {
+  if(g_options["menu_options"] === true && g_options["menu_submenus"] === false) { // TODO
     l_promises.push(browser.menus.update(options_sub_menu_id, {
       "enabled": false,
       "visible": false

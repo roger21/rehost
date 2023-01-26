@@ -1,4 +1,4 @@
-### 0.8.0 (2023-01-15)
+### 0.8.0 (2023-01-26)
 
 **what**
 
@@ -14,6 +14,7 @@
 - ctrl key for bbcode without link
 - basic settings for notifications
 - basic settings for page break
+- basic settings for menu content
 - dark mode for icons and text
 
 **hosts**

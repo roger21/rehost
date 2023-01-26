@@ -190,6 +190,21 @@
     "description": "Label for the option add a break in the popup."
   },
 
+  "popup_label_menu_hosts": {
+    "message": "Hosts in the menu",
+    "description": "Label for the option host choice in the menu in the popup."
+  },
+
+  "popup_label_menu_options": {
+    "message": "Options in the menu",
+    "description": "Label for the option options in the menu in the popup."
+  },
+
+  "popup_label_menu_submenus": {
+    "message": "Use sub-menus",
+    "description": "Label for the option use sub-menus in the popup."
+  },
+
   "notification_size_original": {
     "message": "the image",
     "description": "Size of the original image for the notification."

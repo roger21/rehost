@@ -13,12 +13,14 @@ const default_options = {
   "menu_history": true,
   "menu_temporary": true,
   "menu_options": true, // false, true, "sub"
+  "menu_submenus": false, // TODO option temporaire
   "popup_action": "popup", // "popup", "configuration", "history", "temporary"
   "popup_hosts": true,
   "popup_configuration": true,
   "popup_history": true,
   "popup_temporary": true,
   "popup_options": true,
+  "popup_menu_options_todo": true, // TODO option temporaire
   "rehost_medium": true,
   "rehost_preview": true,
   "rehost_thumbnail": true,
@@ -142,6 +144,13 @@ function init_options(p_do_something) {
     // en cas de mise à jour des valeurs possibles dans default_options
     // les paramètres ajoutés ou supprimés sont déjà gérés
 
+    if(g_options["menu_hosts"] === "sub") {
+      g_options["menu_hosts"] = true; // force disable "sub" value TODO
+    }
+    if(g_options["menu_options"] === "sub") {
+      g_options["menu_options"] = true; // force disable "sub" value TODO
+    }
+
     debug_message("storage.js",
       "init_options browser.storage.local.get g_options",
       g_options);
@@ -171,6 +180,9 @@ function update_options(p_1, p_2) {
       if(g_options["host"] !== "TODO" && g_options["host"] !== "TODO") {
         g_options["link"] = "image";
       }
+      break;
+    case "menu": // TODO options temporaires
+      g_options["menu_" + p_2] = !g_options["menu_" + p_2];
       break;
     default: // notifications, break
       g_options[p_1] = !g_options[p_1];

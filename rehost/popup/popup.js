@@ -65,6 +65,13 @@ function update_popup() {
     }
     document.querySelector("p#popup_break").style.display = "";
   }
+  // show menu options entries TODO options temporaires
+  if(g_options["popup_menu_options_todo"] === true) {
+    document.querySelector("hr#menu_options_hr").style.display = "";
+    document.querySelector("p#popup_menu_hosts").style.display = "";
+    document.querySelector("p#popup_menu_options").style.display = "";
+    document.querySelector("p#popup_menu_submenus").style.display = "";
+  }
   // add checked class
   document.querySelector("p#popup_host_rehost > span")
     .classList.toggle("checked", g_options["host"] === "rehost");
@@ -84,6 +91,12 @@ function update_popup() {
     .classList.toggle("checked", g_options["link"] === "page");
   document.querySelector("p#popup_break > span")
     .classList.toggle("checked", g_options["break"] === true);
+  document.querySelector("p#popup_menu_hosts > span")
+    .classList.toggle("checked", g_options["menu_hosts"] === true);
+  document.querySelector("p#popup_menu_options > span")
+    .classList.toggle("checked", g_options["menu_options"] === true);
+  document.querySelector("p#popup_menu_submenus > span")
+    .classList.toggle("checked", g_options["menu_submenus"] === true);
   // debug message
   debug_message("popup.js",
     "update_popup",
