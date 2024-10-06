@@ -1,3 +1,3 @@
-#### A Firefox extension that easily allows you to rehost images from the web.
+#### Firefox extension that allows you to easily rehost images from the web.
 
 https://addons.mozilla.org/firefox/addon/rehost/
