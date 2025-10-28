@@ -8,7 +8,7 @@
 
   "homepage_url": "https://github.com/roger21/rehost",
 
-  "version": "0.8.0",
+  "version": "0.8.1",
 
   "default_locale": "en",
 
@@ -26,7 +26,10 @@
 
   "browser_specific_settings": {
     "gecko": {
-      "id": "rehost@roger21.free.fr"
+      "id": "rehost@roger21.free.fr",
+      "data_collection_permissions": {
+        "required": ["none"]
+      }
     }
   },
 
