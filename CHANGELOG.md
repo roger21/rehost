@@ -1,3 +1,9 @@
+### 0.8.1 (2025-10-28)
+
+**what**
+
+- update manifest.json settings for data_collection_permissions
+
 ### 0.8.0 (2023-01-26)
 
 **what**
